@@ -7,7 +7,7 @@ bin-release/
 
 # Other files and folders
 .settings/
-node_modules/
+/node_modules
 
 # Executables
 *.swf
@@ -15,6 +15,8 @@ node_modules/
 *.ipa
 *.apk
 *.map
+.idea
+*/**/.idea
 
 
 
