@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import load from './load';
 import PropTypes from 'prop-types';
-import logo from './logo.svg';
+import logo from './logo.png';
 import Menu from './Menu';
 import Routers from './Routers';
 import './App.scss';
