@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import About from "./About";
+import About from "./components/About";
 import Messages from "./Messages";
 import Player from "./Player";
 

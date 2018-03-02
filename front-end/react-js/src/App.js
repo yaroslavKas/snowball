@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import load from './load';
-import PropTypes from 'prop-types';
-import logo from './logo.png';
-import Menu from './Menu';
+// import PropTypes from 'prop-types';
+
 import Routers from './Routers';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import './App.scss';
-
-
-
 
 class App extends Component {
   constructor(props){
@@ -30,18 +28,11 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="mainLayout">
-        <header className="header">
-          <img src={logo} className="logo" alt="logo"/>
-          <h1 className="title">Welcome to React</h1>
-        </header>
-        <Menu />
-        <p className="intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <main className="main">
+        <Header/>
         <Routers/>
-      </div>
-
+        <Footer/>
+      </main>
     );
   }
 }

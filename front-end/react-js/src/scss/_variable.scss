@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+$font-base: 'Raleway', sans-serif;
+
+
+$color-main: #f1861f;
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+$color-1-1: #cccccc;
+$color-1-2: #505050;
+$color-1-3: #666666;
+$color-1-4: #f3f3f3;
+$color-1-5: #b9b9b9;
+
+$color-2-1: #2dd08c;
+
+$color-3-1: #2B333F;
+
+$color-4-1: #e4635a;
+
+
+
+$thin: 100;
+$extralight: 200;
+$light: 300;
+$normal: 400;
+$medium: 500;
+$bold: 600;
+$extrabold: 800;
+$black: 900;
+
+$break-d-xxx:   1650px; //  desktop-xxx
+$break-d-xx:    1450px; //  desktop-xx
+$break-d-x:     1150px; //  desktop-x
+$break-d-l:     1024px; //  desktop-l
+$break-d-m:     930px;  //  desktop-m
+$break-d-s:     860px;  //  desktop-s
+$break-t-l:     767px;  //  tablet-l
+$break-t-m:     736px;  //  tablet-m
+$break-t-s:     667px;  //  tablet-s
+$break-m-l:     568px;  //  mobile-l
+$break-m-m:     425px;  //  mobile-m
+$break-m-s:     384px;  //  mobile-s
+$break-m-xs:    320px;  //  mobile-xs

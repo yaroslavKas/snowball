@@ -1,0 +1,200 @@
+@import './variable';
+@import './base';
+
+
+input {
+  background: transparent;
+}
+.error-block {
+  position: absolute;
+  top: 100%;
+  color: red;
+  font-size: 12px;
+  .ReactModalPortal &,
+  .user-settings__body & {
+    margin-left: 32%;
+  }
+  .login &,
+  .register &,
+  .upload-video &{
+    margin-left: 0;
+  }
+}
+.select {
+  &__wrap {
+    position: relative;
+    width: 68%;
+    .Select {
+      width: 100%;
+    }
+  }
+  &__error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 12px;
+    color: red;
+  }
+}
+.Select {
+  width: 68%;
+  .filter & {
+    width: 100%;
+    & + .Select {
+      margin-top: 15px;
+    }
+  }
+  &-control {
+    line-height: 42px;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px 0 rgba($color-black, .2);
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: 0 1px 4px 0 rgba($color-black, .2);
+    }
+  }
+  &-placeholder {
+    overflow: visible;
+    line-height: 42px;
+    padding-left: 20px;
+  }
+  &-clear {
+    .filter & {
+      &:hover {
+        color: $color-main;
+      }
+    }
+    &-zone {
+      .filter & {
+        width: auto;
+      }
+    }
+  }
+  &-value {
+    &-label {
+      font-size: 18px;
+      font-weight: $bold;
+      padding: 4px 10px;
+      display: block;
+      .filter & {
+        font-size: 14px;
+        #main-layout & {
+          color: $color-main;
+        }
+      }
+    }
+  }
+  .Select-multi-value-wrapper {
+    .filter & {
+      display: flex;
+      .Select-value {
+        position: static;
+      }
+    }
+  }
+  &.Select--multi {
+    .upload-video & {
+      .Select-value-label {
+        font-size: 14px;
+      }
+    }
+    .Select-value {
+      display: flex;
+      flex-direction: row-reverse;
+      background-color: transparent;
+      border: 0;
+      &-icon {
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+        line-height: 28px;
+        color: $color-main;
+        border: 0;
+        &:hover {
+          background: tomato;
+          color: $color-white;
+          border-radius: 0 6px 6px 0;
+        }
+      }
+      .Select-value-label {
+        padding: 4px 10px;
+      }
+      &:hover {
+        background: rgba($color-main, .1);
+        border-radius: 6px;
+      }
+    }
+    .Select-multi-value-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+      padding-bottom: 5px;
+      .Select-value {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+.selectItem {
+  margin-top: 0;
+}
+.react-confirm-alert {
+  font-family: $font-base;
+  text-align: center;
+  &-overlay {
+    background: rgba($color-black, .75);
+  }
+ &-button-group {
+   justify-content: center;
+   button {
+     font-size: 14px;
+     font-weight: $bold;
+     transition: .3s;
+     &:first-child {
+       background: $color-2-1;
+       &:hover,
+       &:focus {
+         background: darken($color-2-1, 10%);
+       }
+     }
+     &:last-child {
+       background: red;
+       &:hover,
+       &:focus {
+         background: darken(red, 10%);
+       }
+     }
+   }
+ }
+  h3 {
+    color: red;
+  }
+}
+.input {
+  font-size: 18px;
+  font-weight: $bold;
+  line-height: 42px;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px 0 rgba($color-black, .2);
+  padding: 0 20px;
+  .ReactModalPortal & {
+    max-width: 365px;
+    width: 100%;
+  }
+  & + .input {
+    margin-top: 20px;
+  }
+}
+.textarea {
+  width: 100%;
+  font-size: 18px;
+  font-weight: $bold;
+  color: $color-black;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px 0 rgba($color-black, .2);
+  resize: none;
+}

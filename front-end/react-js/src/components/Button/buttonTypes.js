@@ -1,0 +1,9 @@
+const buttonTypes = {
+  ANCHOR: 'anchor',
+  NEGATIVE: 'negative',
+  POSITIVE: 'positive',
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+};
+
+export default buttonTypes;
