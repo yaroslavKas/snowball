@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cl from 'classnames';
 
 import buttonTypes from './buttonTypes';
-import './Style.css';
+import './Button.scss';
 
 const Button = (props) => {
   const {
@@ -14,15 +14,18 @@ const Button = (props) => {
   } = props;
 
   return (
-    <button { ...others } className={ cl('Button', `Button__${type}`, className) } onClick={ onClick }>
-      { props.name }
+    <button
+      {...others}
+      className={cl('button', `button__${type}`, className)}
+      onClick={onClick}
+    >
+      {props.name}
     </button>
   );
 };
 
 Button.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node,
   type: PropTypes.string,
   onClick: PropTypes.func,
   disabled: PropTypes.bool

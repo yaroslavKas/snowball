@@ -1,7 +1,9 @@
 import React from 'react';
 import Logo from './Logo';
-import Navigation from '../Navigation';
-import Authentication from '../containers/Authentication';
+import Navigation from './Navigation';
+import Authentication from './Authentication/index';
+
+import './Header.scss';
 
 
 const Header = () => (

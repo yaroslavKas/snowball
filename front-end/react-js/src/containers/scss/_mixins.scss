@@ -70,3 +70,22 @@
     @content;
   }
 }
+
+
+@mixin flexBox($justify: inherit, $align: inherit) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+
+}
+
+@mixin flexFlow($wrap: nowrap, $direction: row) {
+  flex-wrap: $wrap;
+  flex-direction: $direction;
+}
+
+@mixin flex($grow: 0, $shrink: 1, $width: 0) {
+  flex-grow: $grow;
+  flex-shrink: $shrink;
+  flex-basis: $width;
+}

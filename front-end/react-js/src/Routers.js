@@ -1,8 +1,8 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import About from "./components/About";
-import Messages from "./Messages";
-import Player from "./Player";
+import About from "./containers/About";
+import Messages from "./containers/Messages";
+import Player from "./containers/Player";
 
 const Routes = () => (
   <Switch>

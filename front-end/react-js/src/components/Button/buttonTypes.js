@@ -3,7 +3,7 @@ const buttonTypes = {
   NEGATIVE: 'negative',
   POSITIVE: 'positive',
   PRIMARY: 'primary',
-  SECONDARY: 'secondary',
+  SECONDARY: 'modal',
 };
 
 export default buttonTypes;

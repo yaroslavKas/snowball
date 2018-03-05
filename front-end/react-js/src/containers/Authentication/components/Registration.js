@@ -1,11 +1,13 @@
 import React from 'react';
 import {Button, buttonTypes} from '../../../components/Button';
 
-const Logout = () => (
+
+const Registration = (props) => (
   <Button
     type={buttonTypes.SECONDARY}
-    name="Logout"
+    name="Registration"
+    onClick={props.onClick}
   />
 );
 
-export default Logout;
+export default Registration;

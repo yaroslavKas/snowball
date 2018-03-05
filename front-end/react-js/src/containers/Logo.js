@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from '../assets/img/logo.png';
 
+import './Logo.scss';
+
 const Logo = (props) => (
   <figure className="logo">
     <h1 className="logo__body"><img src={logo} alt={props.alt}/></h1>

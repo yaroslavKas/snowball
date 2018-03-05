@@ -1,0 +1,9 @@
+@import "../../containers/scss/variable";
+
+.button {
+  font-size: 14px;
+  line-height: 1.2;
+  border: 1px solid $color-link;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
