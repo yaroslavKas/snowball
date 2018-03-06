@@ -1,14 +1,17 @@
 @import "../../containers/scss/variable";
 
 .modal {
-  display: none;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba($color-black, .6);
+  //display: none;
+  //position: fixed;
+  //left: 0;
+  //right: 0;
+  //top: 0;
+  //bottom: 0;
+  background: red;
   &__show {
     display: block;
+  }
+  p {
+    color: #ffffff;
   }
 }

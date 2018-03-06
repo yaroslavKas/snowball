@@ -6,35 +6,42 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import Registration from './components/Registration';
 
+
 class Authentication extends Component {
   constructor(props){
     super(props);
     this.state = {
-      isOpen: false
+      modalIsOpen: false
     };
 
-    this.handlerModal = this.handlerModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   static propTypes = {
     isOpen:PropTypes.bool,
-    show:PropTypes.bool
   };
 
-  handlerModal () {
-    this.setState({
-      isOpen: true
-    });
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
   render() {
 
     return (
       <div className="authentication">
-        <Login/>
-        <Logout/>
-        <Registration onClick={this.handlerModal} />
-        <Modal show={this.state.isOpen} />
+        <Login onClick={this.openModal}/>
+        <Logout onClick={this.openModal}/>
+        <Registration onClick={this.openModal} />
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          className="module__test"
+        />
       </div>
     );
   }
