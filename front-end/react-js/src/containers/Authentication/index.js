@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 
 import PropTypes from 'prop-types';
 import Modal from '../../components/Modal';
-import Login from './components/Login';
-import Logout from './components/Logout';
-import Registration from './components/Registration';
+import Login from './components/Login'
+import ButtonLogin from './components/ButtonLogin';
+import ButtonLogout from './components/ButtonLogout';
+import ButtonRegistration from './components/ButtonRegistration';
 
 
 class Authentication extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       modalIsOpen: false
@@ -19,7 +20,7 @@ class Authentication extends Component {
   }
 
   static propTypes = {
-    isOpen:PropTypes.bool,
+    isOpen: PropTypes.bool,
   };
 
   openModal() {
@@ -34,14 +35,18 @@ class Authentication extends Component {
 
     return (
       <div className="authentication">
-        <Login onClick={this.openModal}/>
-        <Logout onClick={this.openModal}/>
-        <Registration onClick={this.openModal} />
-        <Modal
+        <Login
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
-          className="module__test"
+          onRequestOpen={this.openModal}
         />
+        {/*<Logout onClick={this.openModal}/>*/}
+        {/*<Registration onClick={this.openModal} />*/}
+        {/*<Modal*/}
+          {/*isOpen={this.state.modalIsOpen}*/}
+          {/*onRequestClose={this.closeModal}*/}
+          {/*className="module__test"*/}
+        {/*/>*/}
       </div>
     );
   }

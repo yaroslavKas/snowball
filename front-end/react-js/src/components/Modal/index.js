@@ -33,6 +33,7 @@ class Modal extends Component {
   render() {
     const {
       className,
+      children,
       ...others,
     } = this.props;
 
@@ -43,7 +44,7 @@ class Modal extends Component {
         {...others}
       >
         <button onClick={this.props.onRequestClose}>Open Modal</button>
-        <p>test</p>
+        { children }
       </ReactModal>
     )
   }
