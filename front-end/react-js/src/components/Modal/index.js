@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
+import {Button, buttonTypes} from '../Button';
 import classes from 'classnames';
 
 import './Modal.scss';
@@ -19,12 +19,6 @@ const modalStyle = {
 };
 
 class Modal extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     isOpen: false
-  //   }
-  // }
 
   componentDidMount() {
     ReactModal.setAppElement('body');
@@ -43,7 +37,11 @@ class Modal extends Component {
         className={classes('modal', className)}
         {...others}
       >
-        <button onClick={this.props.onRequestClose}>Open Modal</button>
+        <Button
+          type={buttonTypes.SECONDARY}
+          className='ion-close-round'
+          onClick={this.props.onRequestClose}
+        />
         { children }
       </ReactModal>
     )
