@@ -3,6 +3,8 @@ import load from './load';
 import Routers from './Routers';
 import Header from './containers/Header';
 import Footer from './containers/Footer';
+import About from './containers/About';
+import LoginPage from './containers/LoginPage';
 import './App.scss';
 
 class App extends Component {
@@ -32,9 +34,12 @@ class App extends Component {
   render() {
     return (
       <main className="main">
-        <Header/>
-        <Routers/>
-        <Footer/>
+        <LoginPage/>
+        {/*<About/>*/}
+        {/*<Header/>*/}
+        {/*<Routers/>*/}
+        {/*<Footer/>*/}
+        {/*{this.props.children}*/}
       </main>
     );
   }

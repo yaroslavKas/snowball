@@ -16,13 +16,13 @@ class Login extends Component {
   }
 
   componentDidMount () {
-    load('http://localhost:3000/profile').then(data => {
-      const Data = JSON.parse(data);
-      this.setState({
-        data: Data
-      });
-      console.log(this.state.data);
-    });
+    // load('http://localhost:3000/profile').then(data => {
+    //   const Data = JSON.parse(data);
+    //   this.setState({
+    //     data: Data
+    //   });
+    //   console.log(this.state.data);
+    // });
   }
   handlerLogin() {
 

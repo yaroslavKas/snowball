@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import PropTypes from 'prop-types';
 import Login from './components/Login'
-import Registration from './components/Registration'
 
 class Authentication extends Component {
   constructor(props) {
@@ -32,11 +31,6 @@ class Authentication extends Component {
     return (
       <div className="authentication">
         <Login
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          onRequestOpen={this.openModal}
-        />
-        <Registration
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           onRequestOpen={this.openModal}
