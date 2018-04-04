@@ -1,0 +1,34 @@
+@import '../../scss/variable';
+@import '../../scss/mixins';
+
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: $color-3-1;
+  &__banner {
+    @include flexBox(center, center);
+    color: $color-white;
+    margin: auto;
+  }
+  &__title {
+    font-size: 32px;
+    margin-bottom: 5px;
+    &-sub {
+      font-size: 20px;
+      margin-bottom: 30PX;
+    }
+  }
+  &__image {
+    max-width: 60%;
+  }
+  .button {
+    min-width: 120px;
+    font-size: 16px;
+    //background: $color-button;
+    //color: $color-white;
+    padding: 8px;
+
+  }
+}
+

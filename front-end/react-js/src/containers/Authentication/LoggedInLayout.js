@@ -6,7 +6,7 @@ class LoggedInLayout extends Component {
     return (
         <div className="LoggedInLayout">
           <div className="LoggedInLayout__content">
-            {/*{this.props.children}*/}
+            {this.props.children}
           </div>
         </div>
     );

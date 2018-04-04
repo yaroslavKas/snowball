@@ -3,7 +3,7 @@ const buttonTypes = {
   NEGATIVE: 'negative',
   POSITIVE: 'positive',
   PRIMARY: 'primary',
-  SECONDARY: 'modal',
+  AUTHENTICATION: 'authentication',
 };
 
 export default buttonTypes;

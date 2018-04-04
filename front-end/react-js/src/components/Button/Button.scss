@@ -3,7 +3,21 @@
 .button {
   font-size: 14px;
   line-height: 1.2;
-  border: 1px solid $color-link;
+  background: $color-white;
   border-radius: 5px;
   padding: 5px 15px;
+  transition: .5s;
+  &:hover,
+  &:focus {
+    color: $color-white;
+    background: $color-button;
+  }
+  &__authentication {
+    background: $color-button;
+    color: $color-white;
+    &:hover,
+    &:focus {
+      background: darken($color-button, 10%);
+    }
+  }
 }
