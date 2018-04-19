@@ -1,0 +1,15 @@
+@import "../../../scss/variable";
+@import "../../../scss/mixins";
+
+.menu {
+flex: 1 1 100%;
+  &__list {
+    @include flexBox(flex-end);
+  }
+  &__item {
+    font-size: 18px;
+    & + .menu__item {
+      margin-left: 15px;
+    }
+  }
+}

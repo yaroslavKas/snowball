@@ -1,0 +1,6 @@
+@import "../../scss/mixins";
+@import "../../scss/variable";
+
+.header {
+  @include flexBox(space-between, center);
+}

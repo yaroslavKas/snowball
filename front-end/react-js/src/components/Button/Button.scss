@@ -20,4 +20,9 @@
       background: darken($color-button, 10%);
     }
   }
+  &__disabled {
+    background: $color-1-1;
+    color: $color-white;
+    pointer-events: none;
+  }
 }

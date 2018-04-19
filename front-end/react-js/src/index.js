@@ -7,12 +7,13 @@ import SessionStore   from './stores/SessionStore';
 
 import App from './App';
 import LoginPage from "./containers/Authentication/LoginPage";
-import LoggedInLayout from "./containers/Authentication/LoggedInLayout";
+import LoggedInLayout from "./containers/LoggedInLayout";
 
-import TaskListsPage from "./containers/TaskListsPage";
+import HomePage from './containers/HomePage';
+import TaskListPage from './containers/TasksListPage';
+import TasksPage from './containers/TasksListPage/components/TasksPage';
+import AboutPage from './containers/AboutPage';
 
-import registerServiceWorker from './registerServiceWorker';
-import AboutPage from './containers/About';
 import './index.scss';
 
 window.handleGoogleApiLoaded = () => {
@@ -26,9 +27,10 @@ function renderApp()  {
       <Route path='/' component={App}>
         <Route path='/login' component={LoginPage} />
         <Route component={LoggedInLayout} onEnter={requireAuth}>
-          <Route path='/lists' component={TaskListsPage}>
-            {/*<Route path='/about' component={AboutPage} />*/}
-            {/*<Route path='/lists/:id' component={TasksPage} />*/}
+          <Route path='/home' component={HomePage} />
+          <Route path='/about' component={AboutPage} />
+          <Route path='/tasks-list' component={TaskListPage}>
+            <Route path='/tasks-list/:id' component={TasksPage} />
           </Route>
         </Route>
       </Route>

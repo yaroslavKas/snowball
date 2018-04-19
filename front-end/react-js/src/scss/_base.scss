@@ -2,8 +2,18 @@
 
 body {
   font-family: $font-base;
+  font-size: 14px;
   line-height: 1.2;
   color: $color-black;
+}
+
+a {
+  color: $color-white;
+  transition: .6s;
+  &:hover,
+  &:focus {
+    color: $color-link;
+  }
 }
 
 button {
@@ -21,30 +31,18 @@ button {
   }
 }
 
-.main {
-  max-width: 1400px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.basic-block {
-  @extend .clear-fix;
-  width: 100%;
-}
-
 .wrapper {
-  @extend .basic-block;
-  &_basic {
+  width: 100%;
+  background: $color-main;
+  @extend .clear-fix;
+  &__basic {
     max-width: 1440px;
+    padding: 0 20px;
     margin: auto;
   }
-}
+  &__content {
 
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  }
 }
 
 //.button-main {

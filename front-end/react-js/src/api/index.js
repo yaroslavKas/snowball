@@ -24,4 +24,30 @@ export default {
 
     });
   },
+
+  listTaskLists() {
+    // eslint-disable-next-line
+    const request = gapi.client.tasks.tasklists.list();
+
+    return this.makeRequest(request);
+  },
+
+  insertTaskList({title}) {
+    // eslint-disable-next-line
+    const request = gapi.client.tasks.tasklists.insert({
+      title
+    });
+
+    return this.makeRequest(request);
+  },
+
+  makeRequest(requestObj) {
+    return new Promise((resolve, reject) => {
+      requestObj.execute(resp =>
+        resp.error
+          ? reject(resp.error)
+          : resolve(resp.result)
+      );
+    });
+  }
 }

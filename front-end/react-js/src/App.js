@@ -4,7 +4,7 @@ import './App.scss';
 class App extends Component {
   render() {
     return (
-      <main className="basic-block">
+      <main className="wrapper">
         {this.props.children}
       </main>
     );
