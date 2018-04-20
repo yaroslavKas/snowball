@@ -61,14 +61,14 @@ class TaskListCreateModal extends Component {
           placeholder='text'
         />
         <Button
-          name='submit'
+          name='Cancel'
           type={buttonTypes.AUTHENTICATION}
-          onClick={this.handleSubmit}
+          onClick={this.handleClose}
         />
         <Button
-          name='Cancel'
+          name='Submit'
           type={disabled}
-          onClick={this.handleClose}
+          onClick={this.handleSubmit}
         />
       </Modal>
     );
