@@ -1,0 +1,97 @@
+@import '../../scss/variable';
+@import '../../scss/mixins';
+
+.task-lists-page {
+  height: 100%;
+  @include flexBox();
+  &__title {
+    font-size: 24px;
+    text-transform: capitalize;
+    padding: 20px 20px 15px;
+  }
+  &__menu {
+    @include flex(1, 0, 300px);
+    background: $color-white;
+    border-radius: 6px;
+    box-shadow: 2px 2px 6px $color-5-1;
+  }
+  &__tasks {
+    @include flex(1, 1 , 100%);
+    padding-left: 30px;
+
+    &-header {
+      @include flexBox(space-between, center);
+      line-height: 28px;
+      padding: 20px 0 30px;
+      .button {
+        font-size: 24px;
+        color: $color-white;
+        background: transparent;
+        padding: 0;
+      }
+    }
+    &-title {
+      font-size: 24px;
+      color: $color-white;
+    }
+    &-item {
+      display: block;
+      border-bottom: 1px solid $color-white;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+      & + .task-lists-page__tasks-item {
+        margin-top: 10px;
+      }
+    }
+  }
+  &__wrap {
+    border-bottom: 1px solid $color-1-1;
+    .button {
+      font-size: 18px;
+      font-weight: $bold;
+      text-align: left;
+      color: $color-5-1;
+      line-height: 20px;
+      border-radius: 0;
+      width: 100%;
+      padding: 10px 20px;
+      &:hover,
+      &:focus {
+        background: $color-1-1;
+      }
+      &:before {
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        margin-right: 15px;
+      }
+    }
+  }
+  &__lists {
+    &-title {
+      font-size: 16px;
+      text-transform: capitalize;
+      border-top: 1px solid $color-1-1;
+      padding: 15px 20px;
+    }
+    &-link {
+      @include flexBox(flex-start, center);
+      font-size: 18px;
+      font-weight: $bold;
+      color: $color-5-1;
+      transition: .6s;
+      padding: 10px 20px;
+      &:hover,
+      &:focus {
+        background: $color-1-1;
+      }
+    }
+    .fa {
+      color: $color-2-1;
+      margin-right: 15px;
+      &:before {
+        font-size: 20px;
+      }
+    }
+  }
+}

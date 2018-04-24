@@ -1,176 +1,88 @@
 import React, {Component} from 'react';
-
-import TasksActions from '../../../actions/TasksActions';
-// import TaskListsActions from '../../../actions/TaskListsActions';
-import TasksStore from '../../../stores/TasksStore';
-// import TaskListsStore from '../../../stores/TaskListsStore';
-
-import TasksPage from '../components/TasksPage';
+import {Button, buttonTypes} from '../../../components/Button';
 import Task from './Task';
-import TaskCreateModal from './TaskCreateModal';
-import PropTypes from "prop-types";
 
-function getStateFromFlux() {
-  return {
-    tasks: TasksStore.getTasks(),
-    // error: TasksStore.getError(),
-    // isLoadingTask: TasksStore.isLoadingTasks(),
-    // taskList: TaskListsStore.getCurrentTaskList() || {}
-  };
-}
+const ENTER_KEY = 13;
+const ESCAPE_KEY = 27;
 
 class TasksPageContainer extends Component {
 
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      ...getStateFromFlux(),
-      // isCreatingTask: false
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     isEditingTaskList: false
+  //   };
+  // }
 
-  static contextTypes = {
-    router: PropTypes.object.isRequired
-  };
-
-  componentWillMount() {
-    TasksActions.loadTasks(this.props.params.id);
-    // TaskListsActions.loadTaskList(this.props.params.id);
-  }
-
-  componentDidMount() {
-    TasksStore.addChangeListener(this._onChange);
-    // TaskListsStore.addChangeListener(this._onChange);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // TasksActions.loadTasks(nextProps.params.id);
-    if (this.props.params.id !== nextProps.params.id) {
-      TasksActions.loadTasks(nextProps.params.id);
-      // TaskListsActions.loadTaskList(nextProps.params.id);
-    }
-  }
-
-  componentWillUnmount() {
-    TasksStore.removeChangeListener(this._onChange);
-    // TaskListsStore.removeChangeListener(this._onChange);
-  }
-
-  // handleTaskStatusChange = (taskId, { isCompleted }) => {
-  //   TasksActions.updateTaskStatus({
-  //     taskListId: this.props.params.id,
-  //     taskId,
-  //     isCompleted
-  //   });
+  // handleEditTaskList = () => {
+  //   this.setState({
+  //     isEditingTaskList: true
+  //   }, () => this.taskList.focus());
   // };
   //
-  // handleTaskUpdate = (taskId, task) => {
-  //   TasksActions.updateTask({
-  //     taskListId: this.props.params.id,
-  //     taskId: taskId,
-  //     ...task
-  //   });
-  // };
+  // handleTaskListEditKeyDown = (e) => {
   //
-  // handleTaskDelete = (taskId) => {
-  //   TasksActions.deleteTask({
-  //     taskListId: this.props.params.id,
-  //     taskId
-  //   });
-  // };
-  //
-  // handleAddTask = () => {
-  //   this.setState({ isCreatingTask: true });
-  // };
-  //
-  // handleTaskCreateModalClose = () => {
-  //   this.setState({ isCreatingTask: false });
-  // };
-  //
-  // handleTaskSubmit = (task) => {
-  //   const taskListId = this.props.params.id;
-  //
-  //   TasksActions.createTask({ taskListId, ...task });
-  //
-  //   this.setState({ isCreatingTask: false });
-  // };
-  //
-  // handleDeleteTaskList = () => {
-  //   const isConfirmed = confirm(
-  //     'All tasks in this Task List will be deleted too. Are you sure to delete this Task List?'
-  //   );
-  //
-  //   if (isConfirmed) {
-  //     TaskListsActions.deleteTaskList({
-  //       taskListId: this.props.params.id
-  //     });
-  //     this.context.router.push('/lists');
+  //   if (e.keyCode === ENTER_KEY) {
+  //     this.saveTaskList();
   //   }
   //
+  //   if (e.keyCode === ESCAPE_KEY) {
+  //     this.cancelEditingTaskList();
+  //   }
   // };
+
+  // saveTaskList = () => {
   //
-  // handleUpdateTaskList = ({name}) => {
-  //   TaskListsActions.updateTaskList({
-  //     taskListId: this.props.params.id,
-  //     name
+  //   this.props.onUpdateTaskList({
+  //     name: this.taskList.value
+  //   });
+  //
+  //   this.cancelEditingTaskList();
+  // };
+
+  // cancelEditingTaskList = () => {
+  //   this.setState({
+  //     isEditingTaskList: false
   //   });
   // };
+  handleCreateTask = () => {
+    console.log('test')
+  };
 
   render() {
     return (
-      <div className="TasksPage">
-        {/*<TasksPage taskList={this.state.taskList}*/}
-        {/*tasks={this.state.tasks}*/}
-        {/*error={this.state.error}*/}
-        {/*isLoadingTasks={this.state.isLoadingTask}*/}
-        {/*onUpdateTaskList={this.handleUpdateTaskList}*/}
-        {/*onAddTask={this.handleAddTask}*/}
-        {/*onDeleteTaskList={this.handleDeleteTaskList}*/}
-        {/*onTaskDelete={this.handleTaskDelete}*/}
-        {/*onTaskStatusChange={this.handleTaskStatusChange}*/}
-        {/*onTaskUpdate={this.handleTaskUpdate}*/}
-        {/*/>*/}
-        <div className="TasksPage__tasks">
+      <div>
+        <header className="task-lists-page__tasks-header">
+          <p className="task-lists-page__tasks-title">List name</p>
+          <Button
+            type={buttonTypes.ICON}
+            className="ion-plus"
+            onClick={this.handleCreateTask}
+          />
+        </header>
+        <ul className="task-lists-page__tasks-list">
           {
-            // this.state.tasks.length ?
-            //   this.state.tasks.map(task =>
-            //     <Task key={task.id}
-            //           text={task.text}
-            //           // notes={task.notes}
-            //           // due={task.due}
-            //           // isCompleted={task.isCompleted}
-            //           // onStatusChange={this.props.onTaskStatusChange.bind(null, task.id)}
-            //           // onUpdate={this.props.onTaskUpdate.bind(null, task.id)}
-            //           // onDelete={this.props.onTaskDelete.bind(null, task.id)}
-            //     />
-            //   )
-            //   :
-            //   <div>Create your first task</div>
-
-            this.state.tasks.map(task =>
-              <Task key={task.id}
-                    text={task.text}
-                // notes={task.notes}
-                // due={task.due}
-                // isCompleted={task.isCompleted}
-                // onStatusChange={this.props.onTaskStatusChange.bind(null, task.id)}
-                // onUpdate={this.props.onTaskUpdate.bind(null, task.id)}
-                // onDelete={this.props.onTaskDelete.bind(null, task.id)}
-              />
+            // this.props.tasks.length ?
+            this.props.tasks.map(task =>
+              <li className="task-lists-page__tasks-item" key={task.id}>
+                <Task
+                  text={task.text}
+                  // notes={task.notes}
+                  // due={task.due}
+                  isCompleted={task.isCompleted}
+                  onStatusChange={this.props.onTaskStatusChange.bind(null, task.id)}
+                  // onUpdate={this.props.onTaskUpdate.bind(null, task.id)}
+                  // onDelete={this.props.onTaskDelete.bind(null, task.id)}
+                />
+              </li>
             )
+            //     :
+            //     <div>Create your first task</div>
           }
-        </div>
-        {/*<TaskCreateModal isOpen={this.state.isCreatingTask}*/}
-        {/*onSubmit={this.handleTaskSubmit}*/}
-        {/*onClose={this.handleTaskCreateModalClose}*/}
-        {/*/>*/}
+        </ul>
       </div>
     );
   }
-
-  _onChange = () => {
-    this.setState(getStateFromFlux());
-  };
 }
 
 export default TasksPageContainer;

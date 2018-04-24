@@ -3,4 +3,6 @@
 
 .header {
   @include flexBox(space-between, center);
+  flex-shrink: 0;
+  width: 100%;
 }

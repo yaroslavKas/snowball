@@ -11,7 +11,7 @@ import LoggedInLayout from "./containers/LoggedInLayout";
 
 import HomePage from './containers/HomePage';
 import TaskListPage from './containers/TasksListPage';
-import TasksPage from './containers/TasksListPage/components/TasksPage';
+import TasksPage from './containers/TasksListPage/components/TasksPageContainer';
 import AboutPage from './containers/AboutPage';
 
 import './index.scss';

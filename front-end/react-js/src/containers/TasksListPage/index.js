@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
+import React, {Component} from 'react';
+import {Link} from 'react-router';
 import PropTypes from "prop-types";
 
 import uniqueHash from '../../utils/uniqueHash';
 
-import TaskListsStore from '../../stores/TaskListsStore'
+import TaskListsStore from '../../stores/TaskListsStore';
 import TaskListsActions from '../../actions/TaskListsActions';
 
-import TaskListCreateModal from './components/TaskListCreateModal'
+import TaskListCreateModal from './components/TaskListCreateModal';
 import {Button, buttonTypes} from '../../components/Button';
+
+import './TasksListPage.scss';
 
 
 function getStateFromFlux() {
@@ -43,17 +45,17 @@ class TaskListsPage extends Component {
   }
 
   handleAddTaskList = () => {
-    this.setState({ isCreatingTaskList: true });
+    this.setState({isCreatingTaskList: true});
   };
 
   handleTaskListCreateModalClose = () => {
-    this.setState({ isCreatingTaskList: false });
+    this.setState({isCreatingTaskList: false});
   };
 
   handleTaskListSubmit = (taskList) => {
     TaskListsActions.createTaskList(taskList);
 
-    this.setState({ isCreatingTaskList: false });
+    this.setState({isCreatingTaskList: false});
   };
   // openModal() {
   //   this.setState({modalIsOpen: true});
@@ -65,32 +67,37 @@ class TaskListsPage extends Component {
 
   render() {
     return (
-      <div className="TaskListsPage">
-        <div className="TaskListsPage__menu">
-          <ul className="list">
-            {
-              this.state.taskLists.map(list =>
-                <li key={uniqueHash()}>
-                  <Link to={`/tasks-list/${list.id}`}>
-                    {list.name}
-                  </Link>
-                </li>
-              )
-            }
-          </ul>
-          <Button
-            onClick={this.handleAddTaskList}
-            name= 'Create new list'
+      <div className="task-lists-page">
+        <div className="task-lists-page__menu">
+          <h2 className="task-lists-page__title">Almost google tasks</h2>
+          <div className="task-lists-page__wrap">
+            <p className="task-lists-page__lists-title">Task lists</p>
+            <ul className="task-lists-page__lists">
+              {
+                this.state.taskLists.map(list =>
+                  <li className="task-lists-page__lists-item" key={uniqueHash()}>
+                    <Link className="task-lists-page__lists-link" to={`/tasks-list/${list.id}`}>
+                      <span className="fa fa-folder not-font-size">icon</span>
+                      {list.name}
+                    </Link>
+                  </li>
+                )
+              }
+            </ul>
+            <Button
+              className="ion-plus"
+              type={buttonTypes.ICON}
+              onClick={this.handleAddTaskList}
+              name='Create new list'
+            />
+          </div>
+          <TaskListCreateModal
+            isOpen={this.state.isCreatingTaskList}
+            onSubmit={this.handleTaskListSubmit}
+            onClose={this.handleTaskListCreateModalClose}
           />
-         <TaskListCreateModal
-           isOpen={this.state.isCreatingTaskList}
-           onSubmit={this.handleTaskListSubmit}
-           onClose={this.handleTaskListCreateModalClose}
-         />
         </div>
-        <div className="TaskListsPage__tasks">
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
     );
   }

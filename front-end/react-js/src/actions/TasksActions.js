@@ -24,32 +24,32 @@ const TasksActions = {
       });
   },
 
-  // updateTaskStatus(params) {
-  //   AppDispatcher.dispatch({
-  //     type   : AppConstants.TASK_UPDATE_REQUEST,
-  //     taskId : params.taskId,
-  //     isCompleted : params.isCompleted
-  //   });
-  //
-  //   api.updateTask({
-  //     taskListId: params.taskListId,
-  //     taskId: params.taskId,
-  //     status: params.isCompleted ? 'completed' : 'needsAction'
-  //   })
-  //       .then(data => {
-  //         AppDispatcher.dispatch({
-  //           type: AppConstants.TASK_UPDATE_SUCCESS,
-  //           task: data,
-  //           taskId: params.taskId
-  //         });
-  //       })
-  //       .catch(err => {
-  //         AppDispatcher.dispatch({
-  //           type: AppConstants.TASK_UPDATE_FAIL,
-  //           error: err
-  //         });
-  //       });
-  // },
+  updateTaskStatus(params) {
+    // AppDispatcher.dispatch({
+    //   type   : AppConstants.TASK_UPDATE_REQUEST,
+    //   taskId : params.taskId,
+    //   isCompleted : params.isCompleted
+    // });
+
+    api.updateTask({
+      taskListId: params.taskListId,
+      taskId: params.taskId,
+      status: params.isCompleted ? 'completed' : 'needsAction'
+    })
+      .then(data => {
+        AppDispatcher.dispatch({
+          type: AppConstants.TASK_UPDATE_SUCCESS,
+          task: data,
+          taskId: params.taskId
+        });
+      })
+      .catch(err => {
+        AppDispatcher.dispatch({
+          type: AppConstants.TASK_UPDATE_FAIL,
+          error: err
+        });
+      });
+  }
   //
   // updateTask(params) {
   //   AppDispatcher.dispatch({

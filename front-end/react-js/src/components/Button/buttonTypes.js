@@ -1,7 +1,7 @@
 const buttonTypes = {
-  ANCHOR: 'anchor',
-  NEGATIVE: 'negative',
-  POSITIVE: 'positive',
+  // ANCHOR: 'anchor',
+  // NEGATIVE: 'negative',
+  ICON: 'icon',
   DISABLED: 'disabled',
   AUTHENTICATION: 'authentication',
 };

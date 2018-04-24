@@ -50,6 +50,18 @@ export default {
     return this.makeRequest(request);
   },
 
+  updateTask({taskListId, taskId, ...params}) {
+    // eslint-disable-next-line
+    const request = gapi.client.tasks.tasks.update({
+      tasklist: taskListId,
+      task: taskId,
+      id: taskId,
+      ...params
+    });
+
+    return this.makeRequest(request);
+  },
+
   makeRequest(requestObj) {
     return new Promise((resolve, reject) => {
       requestObj.execute(resp =>
