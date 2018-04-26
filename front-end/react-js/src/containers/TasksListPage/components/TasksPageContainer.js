@@ -12,8 +12,8 @@ import TaskCreateModal from './TaskCreateModal';
 function getStateFromFlux() {
   return {
     tasks: TasksStore.getTasks(),
-    // error: TasksStore.getError(),
-    // isLoadingTask: TasksStore.isLoadingTasks(),
+    error: TasksStore.getError(),
+    isLoadingTask: TasksStore.isLoadingTasks(),
     taskList: TaskListsStore.getCurrentTaskList() || {}
   };
 }
@@ -24,7 +24,7 @@ class TasksPageContainer extends Component {
     super(props, context);
     this.state = {
       ...getStateFromFlux(),
-      // isCreatingTask: false
+      isCreatingTask: false
     };
   }
 
@@ -34,24 +34,24 @@ class TasksPageContainer extends Component {
 
   componentWillMount() {
     TasksActions.loadTasks(this.props.params.id);
-    // TaskListsActions.loadTaskList(this.props.params.id);
+    TaskListsActions.loadTaskList(this.props.params.id);
   }
 
   componentDidMount() {
     TasksStore.addChangeListener(this._onChange);
-    // TaskListsStore.addChangeListener(this._onChange);
+    TaskListsStore.addChangeListener(this._onChange);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.params.id !== nextProps.params.id) {
       TasksActions.loadTasks(nextProps.params.id);
-      // TaskListsActions.loadTaskList(nextProps.params.id);
+      TaskListsActions.loadTaskList(nextProps.params.id);
     }
   }
 
   componentWillUnmount() {
     TasksStore.removeChangeListener(this._onChange);
-    // TaskListsStore.removeChangeListener(this._onChange);
+    TaskListsStore.removeChangeListener(this._onChange);
   }
 
   handleTaskStatusChange = (taskId, {isCompleted}) => {
@@ -62,24 +62,24 @@ class TasksPageContainer extends Component {
     });
   };
 
-  // handleTaskUpdate = (taskId, task) => {
-  //   TasksActions.updateTask({
-  //     taskListId: this.props.params.id,
-  //     taskId: taskId,
-  //     ...task
-  //   });
-  // };
-  //
+  handleTaskUpdate = (taskId, task) => {
+    TasksActions.updateTask({
+      taskListId: this.props.params.id,
+      taskId: taskId,
+      ...task
+    });
+  };
+
   // handleTaskDelete = (taskId) => {
   //   TasksActions.deleteTask({
   //     taskListId: this.props.params.id,
   //     taskId
   //   });
   // };
-  //
-  // handleAddTask = () => {
-  //   this.setState({ isCreatingTask: true });
-  // };
+
+  handleAddTask = () => {
+    this.setState({isCreatingTask: true});
+  };
 
   handleTaskCreateModalClose = () => {
     this.setState({isCreatingTask: false});
@@ -123,16 +123,17 @@ class TasksPageContainer extends Component {
           error={this.state.error}
           isLoadingTasks={this.state.isLoadingTask}
           onUpdateTaskList={this.handleUpdateTaskList}
-          // onAddTask={this.handleAddTask}
+          onAddTask={this.handleAddTask}
           // onDeleteTaskList={this.handleDeleteTaskList}
           // onTaskDelete={this.handleTaskDelete}
           onTaskStatusChange={this.handleTaskStatusChange}
-          // onTaskUpdate={this.handleTaskUpdate}
+          onTaskUpdate={this.handleTaskUpdate}
         />
-        {/*<TaskCreateModal isOpen={this.state.isCreatingTask}*/}
-        {/*onSubmit={this.handleTaskSubmit}*/}
-        {/*onClose={this.handleTaskCreateModalClose}*/}
-        {/*/>*/}
+        <TaskCreateModal
+          isOpen={this.state.isCreatingTask}
+          onSubmit={this.handleTaskSubmit}
+          onClose={this.handleTaskCreateModalClose}
+        />
       </div>
     );
   }

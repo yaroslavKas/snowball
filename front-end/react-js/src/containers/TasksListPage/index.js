@@ -11,6 +11,7 @@ import TaskListCreateModal from './components/TaskListCreateModal';
 import {Button, buttonTypes} from '../../components/Button';
 
 import './TasksListPage.scss';
+import TasksActions from "../../actions/TasksActions";
 
 
 function getStateFromFlux() {
@@ -65,7 +66,9 @@ class TaskListsPage extends Component {
   //   this.setState({modalIsOpen: false});
   // }
 
+
   render() {
+    // const { router } = this.context;
     return (
       <div className="task-lists-page">
         <div className="task-lists-page__menu">
@@ -76,7 +79,11 @@ class TaskListsPage extends Component {
               {
                 this.state.taskLists.map(list =>
                   <li className="task-lists-page__lists-item" key={uniqueHash()}>
-                    <Link className="task-lists-page__lists-link" to={`/tasks-list/${list.id}`}>
+                    <Link
+                      className="task-lists-page__lists-link"
+                      to={`/tasks-list/${list.id}`}
+                      activeClassName="active"
+                    >
                       <span className="fa fa-folder not-font-size">icon</span>
                       {list.name}
                     </Link>
@@ -90,6 +97,7 @@ class TaskListsPage extends Component {
               onClick={this.handleAddTaskList}
               name='Create new list'
             />
+
           </div>
           <TaskListCreateModal
             isOpen={this.state.isCreatingTaskList}

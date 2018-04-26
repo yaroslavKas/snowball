@@ -11,5 +11,8 @@ flex: 1 1 100%;
     & + .menu__item {
       margin-left: 15px;
     }
+    .active {
+      border-bottom: 2px solid $color-2-1
+    }
   }
 }

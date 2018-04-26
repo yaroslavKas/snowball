@@ -23,7 +23,7 @@ window.handleGoogleApiLoaded = () => {
 function renderApp()  {
   ReactDOM.render(
     <Router history={browserHistory}>
-      {/*<Redirect from='/' to='/login' />*/}
+      <Redirect from='/' to='/login' />
       <Route path='/' component={App}>
         <Route path='/login' component={LoginPage} />
         <Route component={LoggedInLayout} onEnter={requireAuth}>

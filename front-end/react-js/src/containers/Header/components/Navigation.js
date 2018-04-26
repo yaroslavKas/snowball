@@ -7,13 +7,13 @@ const Navigation = () => (
   <nav className="menu">
     <ul className="menu__list">
       <li className="menu__item">
-        <Link to='/about'>About</Link>
+        <Link to='/about' activeClassName="active">About</Link>
       </li>
       {/*<li className="menu__item">*/}
         {/*<Link to='/messages'>Messages</Link>*/}
       {/*</li>*/}
       <li className="menu__item">
-        <Link to='/tasks-list'>Tasks list</Link>
+        <Link to='/tasks-list' activeClassName="active">Tasks list</Link>
       </li>
     </ul>
   </nav>

@@ -25,9 +25,41 @@ export default {
     });
   },
 
+  logout() {
+    return new Promise((resolve, reject) => {
+      //eslint-disable-next-line
+      const token = gapi.auth.getToken();
+
+      if (token) {
+        //eslint-disable-next-line
+        const accessToken = gapi.auth.getToken().access_token;
+
+        fetch(`https://accounts.google.com/o/oauth2/revoke?token=${accessToken}`, {
+          mode: 'no-cors'
+        })
+          .then((res) => {
+            //eslint-disable-next-line
+            gapi.auth.signOut();
+            resolve();
+          })
+          .catch((error) => reject(error));
+      }
+
+    });
+  },
+
   listTaskLists() {
     // eslint-disable-next-line
     const request = gapi.client.tasks.tasklists.list();
+
+    return this.makeRequest(request);
+  },
+
+  showTaskList(taskListId) {
+    // eslint-disable-next-line
+    const request = gapi.client.tasks.tasklists.get({
+      tasklist: taskListId
+    });
 
     return this.makeRequest(request);
   },
@@ -41,10 +73,31 @@ export default {
     return this.makeRequest(request);
   },
 
+  updateTaskList({taskListId, title}) {
+    // eslint-disable-next-line
+    const request = gapi.client.tasks.tasklists.update({
+      tasklist: taskListId,
+      id: taskListId,
+      title
+    });
+
+    return this.makeRequest(request);
+  },
+
   listTasks(taskListId) {
     // eslint-disable-next-line
     const request = gapi.client.tasks.tasks.list({
       tasklist: taskListId
+    });
+
+    return this.makeRequest(request);
+  },
+
+  insertTask({taskListId, ...params}) {
+    // eslint-disable-next-line
+    const request = gapi.client.tasks.tasks.insert({
+      tasklist: taskListId,
+      ...params
     });
 
     return this.makeRequest(request);

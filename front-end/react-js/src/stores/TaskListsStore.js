@@ -57,13 +57,13 @@ AppDispatcher.register(action => {
       break;
     }
 
-    // case AppConstants.TASK_LIST_LOAD_SUCCESS: {
-    //   _currentTaskList = formatTaskList(action.taskList);
-    //
-    //   TaskListsStore.emitChange();
-    //   break;
-    // }
-    //
+    case AppConstants.TASK_LIST_LOAD_SUCCESS: {
+      _currentTaskList = formatTaskList(action.taskList);
+
+      TaskListsStore.emitChange();
+      break;
+    }
+
     case AppConstants.TASK_LIST_CREATE_SUCCESS: {
       const newTaskList = formatTaskList(action.taskList);
       _taskLists.push(newTaskList);
@@ -78,25 +78,25 @@ AppDispatcher.register(action => {
       TaskListsStore.emitChange();
       break;
     }
-    //
-    // case AppConstants.TASK_LIST_UPDATE_SUCCESS: {
-    //   const updatedTaskListIndex = _taskLists.findIndex(taskList => taskList.id === action.taskListId);
-    //   _taskLists[updatedTaskListIndex] = formatTaskList(action.taskList);
-    //
-    //   if (_currentTaskList && _currentTaskList.id === action.taskListId) {
-    //     _currentTaskList = formatTaskList(action.taskList);
-    //   }
-    //
-    //   TaskListsStore.emitChange();
-    //   break;
-    // }
-    //
-    // case AppConstants.TASK_LIST_UPDATE_FAIL: {
-    //   _error = action.error;
-    //
-    //   TaskListsStore.emitChange();
-    //   break;
-    // }
+
+    case AppConstants.TASK_LIST_UPDATE_SUCCESS: {
+      const updatedTaskListIndex = _taskLists.findIndex(taskList => taskList.id === action.taskListId);
+      _taskLists[updatedTaskListIndex] = formatTaskList(action.taskList);
+
+      if (_currentTaskList && _currentTaskList.id === action.taskListId) {
+        _currentTaskList = formatTaskList(action.taskList);
+      }
+
+      TaskListsStore.emitChange();
+      break;
+    }
+
+    case AppConstants.TASK_LIST_UPDATE_FAIL: {
+      _error = action.error;
+
+      TaskListsStore.emitChange();
+      break;
+    }
     //
     // case AppConstants.TASK_LIST_DELETE_SUCCESS: {
     //   const deletedTaskListIndex = _taskLists.findIndex(taskList => taskList.id === action.taskListId);

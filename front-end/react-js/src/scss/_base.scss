@@ -61,10 +61,6 @@ button {
 }
 .not-font-size {
   font-size: 0;
-  &:before,
-  &:after {
-    font-size: 18px;
-  }
 }
 
 //.button-main {

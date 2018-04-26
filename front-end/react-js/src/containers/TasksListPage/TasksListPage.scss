@@ -11,6 +11,7 @@
   }
   &__menu {
     @include flex(1, 0, 300px);
+    max-width: 300px;
     background: $color-white;
     border-radius: 6px;
     box-shadow: 2px 2px 6px $color-5-1;
@@ -84,6 +85,9 @@
       &:hover,
       &:focus {
         background: $color-1-1;
+      }
+      &.active {
+        background: darken($color-1-1, 6%);
       }
     }
     .fa {

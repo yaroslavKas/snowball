@@ -21,20 +21,20 @@ const SessionActions = {
 
         if (callback) callback();
       });
-  }
+  },
 
-  // logout() {
-  //   return new Promise((resolve, reject) => {
-  //     api.logout()
-  //       .then(() => {
-  //         AppDispatcher.dispatch({
-  //           type: AppConstants.SESSION_LOGOUT_SUCCESS
-  //         });
-  //         resolve();
-  //       })
-  //       .catch((error) => reject(error));
-  //   });
-  // }
+  logout() {
+    return new Promise((resolve, reject) => {
+      api.logout()
+        .then(() => {
+          AppDispatcher.dispatch({
+            type: AppConstants.SESSION_LOGOUT_SUCCESS
+          });
+          resolve();
+        })
+        .catch((error) => reject(error));
+    });
+  }
 };
 
 export default SessionActions;
