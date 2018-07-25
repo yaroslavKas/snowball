@@ -8,8 +8,15 @@ import './index.css';
 import Routes from './routers';
 import rootReducer from './reducers';
 
+import api from './api';
+
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+window.handleGoogleApiLoaded = () => {
+  console.log('Api load');
+  api.authorize({ immediate: false });
+};
 
 ReactDOM.render(
   <Provider store={store}>
