@@ -8,7 +8,8 @@ import './App.css';
 import User from './components/User';
 import Year from './components/Year';
 import setYearAction from './actions/ActionYear';
-import {setToggleAction, setToggleActionFalse} from './actions/ActionToggle';
+import { setToggleAction, setToggleActionFalse } from './actions/ActionToggle';
+import { setNotesAction } from './actions/ActionNotes'
 import toggle from "./reducers/dropDown";
 
 import {Link, NavLink, Route, Switch, BrowserRouter} from 'react-router-dom';
@@ -16,6 +17,8 @@ import {Link, NavLink, Route, Switch, BrowserRouter} from 'react-router-dom';
 import Home from './containers/Home';
 import Tab from './components/Tab';
 import Routes from './routers';
+import notes from "./reducers/notes";
+// import load from 'utils/request'
 
 // const User = ({match}) => {
 //   return (<h1>Welcome user {match.params.username}</h1>)
@@ -26,6 +29,7 @@ class App extends Component {
     super(props);
     this.state = {
       value: 'ttt',
+      data: null,
       tabsTitle: [
         {id: 1, name: 'Info'},
         {id: 2, name: 'Calendar'},
@@ -37,16 +41,26 @@ class App extends Component {
     // this.focusTextInput = this.focusTextInput.bind(this);
   }
 
+  // componentDidMount () {
+  //   load('http://localhost:8080/notes').then(data => {
+  //     const Data = JSON.parse(data);
+  //     this.setState({
+  //       data: Data
+  //     });
+  //     console.log(this.state.data);
+  //   });
+  // }
+
   static propTypes= {};
 
 
   onBtnToggleFalse = (e) => {
+    this.props.setNotesFunction();
 
     if (e.target.textContent !== 'Toggle') {
       this.props.setToggleFunctionFalse()
     }
   };
-
 
   render() {
 
@@ -59,6 +73,9 @@ class App extends Component {
         {/*<div className="App">*/}
         <div className="App" onClick={this.onBtnToggleFalse}>
           {/*<User user={this.props.user}/>*/}
+          {
+            console.log('props-notes', this.state.data)
+          }
           <Year
             year={this.props.year}
             setYear={this.props.setYearFunction}
@@ -66,6 +83,11 @@ class App extends Component {
             setToggleFalse={this.props.setToggleFunctionFalse}
             stateDropDown={this.props.stateDropDown}
           />
+          <button
+            onClick={this.props.onGetNotes}
+          >
+            Get notes
+          </button>
           <Tab
             amountTitle={this.state.tabsTitle}
           />
@@ -110,7 +132,8 @@ function mapStateToProps(state) {
   return {
     user: state.userInfo.user,
     year: state.userInfo.year,
-    stateDropDown: state.toggle.stateDropDown
+    stateDropDown: state.toggle.stateDropDown,
+    // notes: state.notes.notesList
   }
 }
 
@@ -124,6 +147,13 @@ function mapDispatchToProps(dispatch) {
     },
     setToggleFunctionFalse: stateDropDown => {
       dispatch(setToggleActionFalse(stateDropDown))
+    },
+    // onGetNotes: () => {
+    //
+    //   dispatch(setNotesAction());
+    // }
+    setNotesFunction: notesList => {
+      dispatch(setNotesAction(notesList))
     }
   }
 }

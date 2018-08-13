@@ -1,12 +1,14 @@
+import constants from '../constants/AppConstants';
+
 const initialState = {
   stateDropDown: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "SET_TOGGLE":
+    case constants.SET_TOGGLE:
       return {...state, stateDropDown: !state.stateDropDown};
-    case "SET_TOGGLE_FALSE":
+    case constants.SET_TOGGLE_FALSE:
       return {...state, stateDropDown: false};
     default:
       return state

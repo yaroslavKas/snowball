@@ -1,12 +1,14 @@
+import constants from '../constants/AppConstants';
+
 const setToggleAction = () => {
   return {
-    type: "SET_TOGGLE"
+    type: constants.SET_TOGGLE
   }
 };
 
 const setToggleActionFalse = () => {
   return {
-    type: "SET_TOGGLE_FALSE"
+    type: constants.SET_TOGGLE_FALSE
   }
 };
 
