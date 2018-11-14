@@ -1,5 +1,6 @@
 module.exports = {
-  url: "mongodb://localhost:27017/firsCollectionDB"
+  url: "mongodb://localhost:27017/firsCollectionDB",
+  auth: "mongodb://localhost:27017/users"
 };
 //
 // {

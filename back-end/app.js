@@ -8,19 +8,21 @@ const port = 8080;
 
 // Initialization of express application
 const app = express();
-const MongoClient = mongodb.MongoClient;
 
 // Using bodyParser middleware
-// app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
-
 app.use(cors({ origin: "*"}));
 
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
+const MongoClient = mongodb.MongoClient;
+
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 
 // const server = app.listen(8080, () => {
