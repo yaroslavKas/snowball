@@ -17,6 +17,7 @@ bin-release/
 *.map
 .idea
 */**/.idea
+*/**/package-lock.json
 
 
 
