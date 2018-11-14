@@ -9,7 +9,8 @@ import User from './components/User';
 import Year from './components/Year';
 import setYearAction from './actions/ActionYear';
 import { setToggleAction, setToggleActionFalse } from './actions/ActionToggle';
-import { setNotesAction } from './actions/ActionNotes'
+import { getNotesAction, setCreateNote, deleteNote } from './actions/ActionNotes';
+import { submitLogin } from './actions/ActionAuth';
 import toggle from "./reducers/dropDown";
 
 import {Link, NavLink, Route, Switch, BrowserRouter} from 'react-router-dom';
@@ -18,6 +19,7 @@ import Home from './containers/Home';
 import Tab from './components/Tab';
 import Routes from './routers';
 import notes from "./reducers/notes";
+import auth from "./reducers/auth";
 // import load from 'utils/request'
 
 // const User = ({match}) => {
@@ -29,7 +31,10 @@ class App extends Component {
     super(props);
     this.state = {
       value: 'ttt',
-      data: null,
+      titleNote: '',
+      bodyNote: '',
+      email: '',
+      password: '',
       tabsTitle: [
         {id: 1, name: 'Info'},
         {id: 2, name: 'Calendar'},
@@ -37,29 +42,62 @@ class App extends Component {
       ]
     };
 
-    // this.second = React.createRef();
-    // this.focusTextInput = this.focusTextInput.bind(this);
+    this.onTitleChange = this.onTitleChange.bind(this);
+    this.onBodyChange = this.onBodyChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
-
-  // componentDidMount () {
-  //   load('http://localhost:8080/notes').then(data => {
-  //     const Data = JSON.parse(data);
-  //     this.setState({
-  //       data: Data
-  //     });
-  //     console.log(this.state.data);
-  //   });
-  // }
 
   static propTypes= {};
 
 
   onBtnToggleFalse = (e) => {
-    this.props.setNotesFunction();
+
 
     if (e.target.textContent !== 'Toggle') {
       this.props.setToggleFunctionFalse()
     }
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const data = {
+      title: this.state.titleNote,
+      text: this.state.bodyNote
+    };
+
+    this.props.setCreateFunction(data);
+  };
+
+  handleEmail = (e) => {
+    this.setState({ email: e.target.value })
+  };
+
+  handlePassword = (e) => {
+    this.setState({ password: e.target.value })
+  };
+
+  login = (e) => {
+    e.preventDefault();
+
+    const allData = { ...this.state };
+    const data = {
+      email: allData.email,
+      password: allData.password
+    };
+
+    this.props.submitLogin(data);
+
+    console.log('data', data);
+    console.log('auth', auth);
+  };
+
+  onTitleChange = (e) => {
+    this.setState({ titleNote: e.target.value });
+  };
+
+  onBodyChange = (e) => {
+    this.setState({ bodyNote: e.target.value });
   };
 
   render() {
@@ -73,24 +111,40 @@ class App extends Component {
         {/*<div className="App">*/}
         <div className="App" onClick={this.onBtnToggleFalse}>
           {/*<User user={this.props.user}/>*/}
-          {
-            console.log('props-notes', this.state.data)
-          }
+
+          <form>
+            <input onChange={this.handleEmail} type="email" placeholder="Email" value={this.state.email}/>
+            <input onChange={this.handlePassword} type="text" placeholder="Password" value={this.state.password}/>
+            <button type="submit" onClick={this.login} value="Submit" >Login</button>
+          </form>
           <Year
             year={this.props.year}
             setYear={this.props.setYearFunction}
             setToggle={this.props.setToggleFunction}
             setToggleFalse={this.props.setToggleFunctionFalse}
             stateDropDown={this.props.stateDropDown}
+            notesList={this.props.notes}
+            setNotesFunction={this.props.setNotesFunction}
+            deleteNote={this.props.deleteNote}
+
           />
-          <button
-            onClick={this.props.onGetNotes}
-          >
-            Get notes
-          </button>
+          {/*<button*/}
+            {/*onClick={this.props.onGetNotes}*/}
+          {/*>*/}
+            {/*Get notes*/}
+          {/*</button>*/}
           <Tab
             amountTitle={this.state.tabsTitle}
           />
+
+          {/*<form action={'http://localhost:8081/notes'} method="POST"  className="note-form" id="note-form">*/}
+          <form className="note-form" id="note-form">
+            <input type="text" onChange={this.onTitleChange} value={this.state.titleNote}/>
+            <input type="text" onChange={this.onBodyChange} value={this.state.bodyNote}/>
+            <button type="submit" onClick={this.onSubmit} value="Submit">submit</button>
+          </form>
+
+
 
 
           {/*<header className="App-header">*/}
@@ -133,7 +187,8 @@ function mapStateToProps(state) {
     user: state.userInfo.user,
     year: state.userInfo.year,
     stateDropDown: state.toggle.stateDropDown,
-    // notes: state.notes.notesList
+    notes: state.notes.stateNotesList,
+    auth: state.auth.login
   }
 }
 
@@ -148,12 +203,17 @@ function mapDispatchToProps(dispatch) {
     setToggleFunctionFalse: stateDropDown => {
       dispatch(setToggleActionFalse(stateDropDown))
     },
-    // onGetNotes: () => {
-    //
-    //   dispatch(setNotesAction());
-    // }
     setNotesFunction: notesList => {
-      dispatch(setNotesAction(notesList))
+      dispatch(getNotesAction(notesList))
+    },
+    setCreateFunction: notesList => {
+      dispatch(setCreateNote(notesList))
+    },
+    deleteNote: data => {
+      dispatch(deleteNote(data))
+    },
+    submitLogin: auth => {
+      dispatch(submitLogin(auth))
     }
   }
 }

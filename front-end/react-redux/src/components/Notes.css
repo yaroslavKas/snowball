@@ -1,0 +1,9 @@
+.notes-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.note {
+  width: 20%;
+  border: 1px solid cornflowerblue;
+  box-sizing: border-box;
+}

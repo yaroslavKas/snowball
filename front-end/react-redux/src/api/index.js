@@ -13,7 +13,6 @@ export default {
           'cookie_policy': 'single_host_origin'
         },
         authResult => {
-          console.log(authResult);
           if (authResult.error) {
             return reject(authResult.error);
           }
