@@ -1,28 +1,58 @@
 "use strict";
 
 const express = require('express');
-const fs = require('fs');
 const bodyParser = require('body-parser');
 const app = express();
-const qs = require('querystring');
 
-app.use("/", express.static(__dirname + "/public"));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use("/api", bodyParser.json());
+app.use(express.static(__dirname + "/public"));
 
-app.get("/user", (req, res) => {
-  fs.readFile("./index.html", "utf8", (err, data) => {
-    data = data.replace("{name}", "User");
+app.use((req, res, next) => {
+  let { method, url } = req;
+  console.log(`${method} ${url}`);
 
-    res.end(data);
-  });
+  next();
 });
 
-app.post("/user", (req, res) => {
-  console.log(req.body);
 
-  let name = req.body.name;
-  let age = req.body.age;
-  res.send(`Name: ${name}, Age: ${age}`);
+app.get("/api/resourceName", (req, res) => {
+
+  res.json(["resource1", "resource2"]);
+});
+
+app.get("/api/resourceName/:id", (req, res) => {
+  let id = req.params.id;
+  console.log(`id: ${id}`);
+
+  res.json("resource");
+});
+
+app.post("/api/resourceName", (req, res) => {
+  let body = req.body;
+  console.log("body:");
+  console.log(body);
+
+  res.status(201);
+  res.set("Location", `/resourceName/3`);
+  res.end();
+});
+
+app.put("/api/resourceName/:id", (req, res) => {
+  let id = req.params.id;
+  console.log(`id: ${id}`);
+
+  let body = req.body;
+  console.log("body:");
+  console.log(body);
+
+  res.end();
+});
+
+app.delete("/api/resourceName/:id", (req, res) => {
+  let id = req.params.id;
+  console.log(`id: ${id}`);
+
+  res.end();
 });
 
 app.listen(3000);
