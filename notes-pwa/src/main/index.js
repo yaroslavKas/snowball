@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Route, Switch, NavLink} from 'react-router-dom';
+import logo from '../logo.svg';
+import Home from "../containers/home";
+import rs from '../config/routes';
 
 class App extends Component {
   render() {
@@ -10,6 +13,7 @@ class App extends Component {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
+          <NavLink exact activeClassName="active" to="/home">Home</NavLink>
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -19,6 +23,14 @@ class App extends Component {
             Learn React
           </a>
         </header>
+
+        <Switch>
+          <Route
+            exact
+            path={rs.home}
+            component={Home}
+          />
+        </Switch>
       </div>
     );
   }

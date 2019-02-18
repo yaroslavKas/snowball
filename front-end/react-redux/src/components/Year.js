@@ -20,6 +20,7 @@ class Year extends Component {
   onBtnToggle = () => {
     this.props.setToggle();
   };
+
   handleNotes = () => {
     this.props.setNotesFunction();
   };
