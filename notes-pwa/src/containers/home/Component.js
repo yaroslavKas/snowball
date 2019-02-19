@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
+import NoteEditor from './components/NoteEditor';
 
 // import PropTypes from 'prop-types';
 
-class Home extends React.Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {}
@@ -26,16 +27,16 @@ class Home extends React.Component {
 
     return (
       <div className="notes-list">
+        <NoteEditor
+          setCreateFunction={this.props.setCreateFunction}
+        />
         <button onClick={this.handleNotes}>Notes</button>
         {
           notes != null ?
             notes.map((note) => {
               return (
                 <div className="note" key={note._id}>
-                  <h3>{note.title}</h3>
-                  {note.text && <p>{note.text}</p>}
-                  {note.test && <p>{note.test}</p>}
-                  {note.param && <p>{note.param}</p>}
+                  <h3>{note.body}</h3>
                   <button onClick={() => this.handleDelete(note._id)}>Delete</button>
                 </div>
               )
