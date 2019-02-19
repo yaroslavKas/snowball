@@ -1,0 +1,147 @@
+//@import '../../scss/variable';
+//@import '../../scss/mixins';
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.modal {
+  //@include flexBox;
+  //@include flexFlow(wrap);
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  border-radius: 5px;
+  transform: translateX(-50%);
+  outline: none;
+  //background-color: rgba($color-white, 0.9);
+  //box-shadow: 0 0 40px 15px rgba($color-black, .1);
+  padding: 30px 40px;
+  //@include respond-to(desktop-s) {
+  //  top: 10%;
+  //}
+  header {
+    margin-bottom: 20px;
+  }
+  .button__icon{
+    width: 20px;
+    height: 20px;
+    float: right;
+    padding: 1px;
+    &:after {
+      content:"х";
+    }
+  }
+  &__question {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  &__wrap {
+    width: 100%;
+    text-align: center;
+  }
+  &__authentication {
+    width: 340px;
+    top: 5%;
+    .button__link {
+      //font-family: $fontBase;
+      //color: $color-7-1;
+      //font-weight: $normal;
+      &:hover,
+      &:focus {
+        //color: darken($color-7-1, 15%);
+      }
+    }
+  }
+  &__title {
+    font-size: 36px;
+    text-align: center;
+    .reset-password & {
+      margin-bottom: 30px;
+    }
+  }
+  &__subtitle {
+    //color: $color-main;
+    margin-top: 15px;
+  }
+  &__delete-account {
+    width: 100%;
+    max-width: 450px;
+    padding: 40px 80px;
+    header {
+      margin-bottom: 30px;
+    }
+  }
+  &__description {
+    line-height: 1.4;
+    margin-top: 15px;
+  }
+  &__block {
+    margin-bottom: 28px;
+  }
+  &__request {
+    top: 10%;
+    width: 100%;
+    max-width: 560px;
+    //@include respond-to(tablet-s) {
+    //  padding: 15px;
+    //}
+  }
+  &__join {
+    width: 500px;
+    top: 10%;
+    //@include respond-to(mobile-l) {
+    //  width: inherit;
+    //  min-width: 310px;
+    //}
+  }
+  &__change {
+    width: 100%;
+    max-width: 390px;
+  }
+  &__buttons {
+    .button {
+      min-width: 170px;
+      padding-left: 36px;
+      padding-right: 36px;
+    }
+  }
+  &.registration {
+    width: 100%;
+    max-width: 450px;
+    //background: $color-1-6;
+  }
+  &.success {
+    width: 100%;
+    max-width: 380px;
+  }
+  .ti-close {
+    //@include flexBox(center, center);
+  }
+  &__footer {
+    //@include flexBox(center, center);
+    //@include flexFlow(wrap);
+    margin-top: 20px;
+    .footer_block {
+      //@include flexBox(center, center);
+      & + .footer_block {
+        margin-top: 5px;
+      }
+    }
+  }
+  .button__social-network {
+    //color: $color-7-2;
+    margin-right: 10px;
+    .fa {
+      margin-right: 3px;
+    }
+  }
+
+  .resetPas {
+    footer {
+      .button {
+        width: 180px;
+      }
+    }
+  }
+}

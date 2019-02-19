@@ -1,0 +1,26 @@
+.system {
+  display: inline-block;
+  &__send-command {
+    display: inline-flex;
+    input {
+      width: 300px;
+      height: 60px;
+      font-size: 35px;
+      text-align: center;
+      padding: 2px;
+    }
+  }
+  &__responses {
+    max-height: 600px;
+    overflow: auto;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid;
+    width: 600px;
+    display: table-caption;
+    p {
+      border-bottom: 1px  solid;
+      padding: 5px;
+    }
+  }
+}
