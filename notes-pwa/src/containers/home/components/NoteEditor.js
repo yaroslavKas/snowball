@@ -17,10 +17,14 @@ class NoteEditor extends Component {
     const {text} = this.state;
     const data = {
       body: text,
+      color: 'yellow',
+      // id: Date.now()
     };
 
+    // this.props.onNoteAdd(data);
     this.props.setCreateFunction(data);
     this.setState({text: ''})
+    console.log(JSON.parse(localStorage.getItem('notes')))
   };
 
   render() {

@@ -6,24 +6,43 @@ import NoteEditor from './components/NoteEditor';
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      notes: [],
+    }
   }
+  componentDidMount = () => {
+    let localNotes = JSON.parse(localStorage.getItem('notes'));
+    if (localNotes) {
+      this.setState({ notes: localNotes });
+    }
+
+    console.log('localNotes', localNotes)
+
+  };
+
+  componentDidUpdate = () => {
+    this._updateLocalStorage();
+    let localNotes = JSON.parse(localStorage.getItem('notes'));
+    console.log('localNotes', localNotes)
+  };
 
   componentWillMount = () => {
     this.props.setNotesFunction();
   };
 
-  handleNotes = () => {
-    this.props.setNotesFunction();
-    console.log(this.props.notes);
+  handleNoteDelete = (note) => {
+    // const noteId = note._id;
+    // const newNotes = this.state.notes.filter(function(note) {
+    //   return note.id !== noteId;
+    // });
+    // this.setState({ notes: newNotes });
+    this.props.deleteNote(note._id)
   };
-  handleDelete = (id) => {
-    this.props.deleteNote(id)
-  };
+
 
   render() {
     const {notes} = this.props;
-
+    // const {notes} = this.state;
 
     return (
       <div className="notes-list">
@@ -36,14 +55,20 @@ class Home extends Component {
             notes.map((note) => {
               return (
                 <div className="note" key={note._id}>
+
+
                   <h3>{note.body}</h3>
-                  <button onClick={() => this.handleDelete(note._id)}>Delete</button>
+                  <button onClick={() => this.handleNoteDelete(note)}>Delete</button>
                 </div>
               )
             }) : null
         }
       </div>
     )
+  }
+  _updateLocalStorage = () => {
+    let notes = JSON.stringify(this.props.notes);
+    localStorage.setItem('notes', notes);
   }
 }
 
