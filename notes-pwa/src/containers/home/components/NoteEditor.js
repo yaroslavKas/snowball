@@ -23,8 +23,8 @@ class NoteEditor extends Component {
 
     // this.props.onNoteAdd(data);
     this.props.setCreateFunction(data);
-    this.setState({text: ''})
-    console.log(JSON.parse(localStorage.getItem('notes')))
+
+    this.setState({text: ''});
   };
 
   render() {
