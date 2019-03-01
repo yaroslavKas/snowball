@@ -1,18 +1,46 @@
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
-const url = require('../etc/config');
+// import mongodb from 'mongodb';
 
-module.exports = {
-  // signup: function(name, email, password) {
-  //   MongoClient.connect(url, function (err, db) {
-  //     db.collection('user').insertOne( {
-  //       "name": name,
-  //       "email": email,
-  //       "password": password
-  //     },function(err, result){
-  //       assert.equal(err, null);
-  //       console.log("Saved the user sign up details.");
-  //     });
-  //   });
-  // }
+module.exports = (app, db) => {
+
+
+  app.get('/', (req, res) => {
+
+  });
+
+  app.get('/listuser', (req, res) => {
+
+    db.collection('users').find({}).toArray((err, result) => {
+      if (err) {
+        res.send({'error': 'An error has occurred'});
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  app.post('/signin', (req, res) => {
+
+    const user = {
+      email:  req.body.email,
+      password: req.body.password,
+    };
+
+    // if(user_name === 'admin' && password === 'admin'){
+    //   res.send('success');
+    // }
+    // else{
+    //   res.send('Failure');
+    // }
+
+    db.collection('users').insert(user, (err, result) => {
+      if (err) {
+        res.send({'error': 'An error has occurred'});
+        console.log('error');
+      } else {
+        res.send(req.body);
+        console.log(req.body);
+      }
+    });
+  })
+
 };

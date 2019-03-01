@@ -15,13 +15,10 @@ const getNotesAction = () => {
         console.log(err, constants.SET_NOTES_ERROR)
       });
 
-
-
   }
 };
 
 const setCreateNote = (data) => {
-
   return dispatch => {
     api.createNote(data)
       .then(() => {
@@ -53,24 +50,6 @@ const deleteNote = (data) => {
       })
   }
 };
-
-// const submitLogin = (data) => {
-//   const url = apiSettings.endpoints.genLoginUrl();
-//   return dispatch => {
-//     return request
-//       .post(url, data, dispatch, actionTypes.LOGIN)
-//       .then((res) => {
-//         if (res.data.isAdmin) {
-//           setLocalStorage('isAuthorised', 'true');
-//           window.location.href = '/admin'
-//         } else {
-//           dispatch({type: actionTypes.LOGIN.fulfilled, data: res.data});
-//           dispatch(getUserInfo());
-//         }
-//       })
-//   }
-// };
-
 
 
 export  {

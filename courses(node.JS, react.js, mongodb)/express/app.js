@@ -42,7 +42,7 @@ app.put("/api/resourceName/:id", (req, res) => {
   console.log(`id: ${id}`);
 
   let body = req.body;
-  console.log("body:");
+  console.log("body:");``
   console.log(body);
 
   res.end();

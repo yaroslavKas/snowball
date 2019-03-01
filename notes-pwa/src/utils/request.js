@@ -12,7 +12,7 @@ export default {
     return axios.delete(`http://localhost:8080/notes/${noteId}`);
   },
 
-  auth(data) {
+  registration(data) {
     return axios.post('http://localhost:8080/signin', data);
   }
 }

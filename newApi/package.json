@@ -1,0 +1,23 @@
+{
+  "name": "newapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "babel-node": "babel-node --presets=latest",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec npm rum babel-node -- app.js --exec babel-node"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "hbs": "^4.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "nodemon": "^1.18.10"
+  }
+}

@@ -69,28 +69,4 @@ module.exports = (app, db) => {
       }
     });
   });
-
-  app.post('/signin', (req, res) => {
-    console.log(req);
-      let user_name =  req.body.email;
-      let password = req.body.password;
-
-    if(user_name === 'admin' && password === 'admin'){
-      res.send('success');
-    }
-    else{
-      res.send('Failure');
-    }
-
-    // db.collection('notes').insert(note, (err, result) => {
-    //   if (err) {
-    //     res.send({'error': 'An error has occurred'});
-    //     console.log('error');
-    //   } else {
-    //     res.send(result.ops[0]);
-    //     console.log(result.ops[0]);
-    //   }
-    // });
-  })
-
 };

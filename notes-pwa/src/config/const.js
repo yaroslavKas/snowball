@@ -7,6 +7,9 @@ export default keyMirror({
   CREATE_NOTE: 'CREATE_NOTE',
   DELETE_NOTE: 'DELETE_NOTE',
 
+
+  REGISTER_SUCCESS: 'REGISTER_SUCCESS',
+
   KEY_CODE: {
 
   }
