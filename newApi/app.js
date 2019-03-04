@@ -1,7 +1,10 @@
 "use strict";
 
+import mongoose from 'mongoose';
 import express from 'express';
-import notesRouter from './notes/notesRouter';
+import noteRouter from './notes/noteRouter';
+
+mongoose.connect('mongodb://localhost:27017/newApi');
 
 const app = express();
 const port = 8080;
@@ -15,47 +18,44 @@ const port = 8080;
 //   next();
 // });
 
-app.use((req, res, next) => {
-
-  let { method, url } = req;
-  console.log(`${method} ${url}`);
-  next();
-
-});
+// app.use((req, res, next) => {
+//
+//   let { method, url } = req;
+//   console.log(`${method} ${url}`);
+//   next();
+//
+// });
 
 // app.use(express.static(__dirname + "/public"));
-app.use("/notes", notesRouter);
+app.use("/notes", noteRouter);
 
 
-app.use((req, res, next) => {
+// app.use((req, res, next) => {
+//
+//   res.status(404);
+//   res.send(`Error: gfgdfgdfgdfgdfgdfg`);
+//   if (err.name === "ReferenceError") {
+//     console.log(err);
+//
+//     res.status(404);
+//     res.send(`Error: ${err.name} gfgdfgdfgdfgdfgdfg`);
+//
+//   } else {
+//     next(err);
+//   }
+//   next();
+// });
 
-  res.status(404);
-  res.send(`Error: gfgdfgdfgdfgdfgdfg`);
-  // if (err.name === "ReferenceError") {
-  //   console.log(err);
-  //
-  //   res.status(404);
-  //   res.send(`Error: ${err.name} gfgdfgdfgdfgdfgdfg`);
-  //
-  // } else {
-  //   next(err);
-  // }
-  next();
-});
-
-app.use((err, req, res, next) => {
-
-  if (res.headersSent) {
-    next(err);
-
-  } else {
-    res.status(500);
-    res.send(`Error other: ${err.message} my error`);
-  }
-
-});
-
-
+// app.use((err, req, res, next) => {
+//   if (res.headersSent) {
+//     next(err);
+//
+//   } else {
+//     res.status(500);
+//     res.send(`Error other: ${err.message} my error`);
+//   }
+// });
+//
 app.listen(port, () => {
   console.log(`We are live on ${port}`);
 });
