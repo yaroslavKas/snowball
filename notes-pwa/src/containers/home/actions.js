@@ -30,8 +30,6 @@ const setCreateNote = (data) => {
         //     // note: data
         //   }
         // );
-        console.log(data);
-
       })
       .catch(err => {
         console.log(err, constants.SET_NOTES_ERROR)

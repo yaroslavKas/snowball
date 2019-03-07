@@ -13,6 +13,6 @@ export default {
   },
 
   registration(data) {
-    return axios.post('http://localhost:8080/signin', data);
+    return axios.post('http://localhost:8080/auth', data);
   }
 }

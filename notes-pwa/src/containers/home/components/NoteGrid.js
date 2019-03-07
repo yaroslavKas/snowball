@@ -1,15 +1,18 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Note from './Note';
-import NoteSearch from "./NoteSearch";
+import NoteSearch from './NoteSearch';
+import Masonry from 'masonry-layout';
 
 class NoteGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
       notesList: [],
-      searchResult: []
+      searchResult: [],
+      searchValue: ''
     }
   }
+
 
   componentDidMount = () => {
     let localNotes = JSON.parse(localStorage.getItem('notes'));
@@ -17,6 +20,12 @@ class NoteGrid extends Component {
     if (localNotes) {
       this.setState({ notesList: localNotes, searchResult: localNotes});
     }
+
+    let grid = this.refs.grid;
+    this.msnry = new Masonry( grid, {
+      itemSelector: '.notes__item',
+      gutter: 10,
+    });
   };
 
   componentWillReceiveProps = (nextProps) => {
@@ -25,44 +34,48 @@ class NoteGrid extends Component {
 
   componentDidUpdate = () => {
     this._updateLocalStorage();
+
+    this.msnry.reloadItems();
+    this.msnry.layout();
   };
 
   handleNoteSearch = (e) => {
     const {notesList} = this.state;
     const noteValue = e.target.value.toLowerCase();
 
-    const searchResult = notesList.filter((note) => {
-      let searchValue = note.body.toLowerCase();
+    const searchResult = notesList.filter((item) => {
+      let searchValue = item.note.toLowerCase();
       return searchValue.indexOf(noteValue) !== -1;
 
     });
 
-    this.setState({ searchResult: searchResult });
+    this.setState({
+      searchValue: e.target.value,
+      searchResult: searchResult
+    });
   };
 
 
 
 
   render() {
-    const { searchResult } = this.state;
+    const { searchResult, searchValue } = this.state;
     const {deleteNote} = this.props;
 
     return (
-      <div>
+      <div className="notes__grid">
         <NoteSearch
+          value={searchValue}
           noteSearch={this.handleNoteSearch}
         />
-        <ul>
-          {
-            console.log(searchResult)
-          }
+        <ul className="notes__list grid" ref="grid">
           {
             searchResult.map((note) => {
               return (
                 <Note
                   key={note._id}
                   id={note._id}
-                  body={note.body}
+                  body={note.note}
                   deleteNote={deleteNote}
                 />
               )

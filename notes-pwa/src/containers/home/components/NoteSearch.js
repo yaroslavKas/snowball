@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import Input from '../../../components/Input'
 
 class NoteSearch extends Component {
 
@@ -7,9 +8,13 @@ class NoteSearch extends Component {
     const {noteSearch} = this.props;
 
     return (
-      <div className="note__search">
-        <input type="text" onChange={noteSearch} placeholder="Search here" />
-        <button type="button">Search</button>
+      <div className="notes__search">
+        <Input
+          type="text"
+          placeholder="Search here"
+          value={this.props.value}
+          onChange={noteSearch}
+        />
       </div>
     )
   }

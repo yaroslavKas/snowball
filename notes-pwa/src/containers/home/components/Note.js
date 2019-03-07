@@ -1,23 +1,19 @@
-import React, {Component}from 'react'
+import React from 'react'
 
-class Note extends Component {
+const Note = (props) => {
 
+  const {
+    body,
+    deleteNote,
+    id
+  } = props;
 
-  render() {
-
-    const {
-      body,
-      deleteNote,
-      id
-    } = this.props;
-
-    return (
-      <li>
-        <h3>{body}</h3>
-        <button onClick={() => deleteNote(id)}>Delete</button>
-      </li>
-    )
-  }
-}
+  return (
+    <li className="notes__item">
+      <p>{body}</p>
+      <button onClick={() => deleteNote(id)}>Delete</button>
+    </li>
+  )
+};
 
 export default Note;

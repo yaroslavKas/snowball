@@ -2,9 +2,17 @@
 
 import mongoose from 'mongoose';
 import express from 'express';
-import noteRouter from './notes/noteRouter';
+import noteRouter from './routers/notes/noteRouter';
+import userRouter from './routers/users/userRouter';
+import cors from 'cors';
 
-mongoose.connect('mongodb://localhost:27017/newApi');
+mongoose.connect('mongodb://localhost:27017/newApi', { useNewUrlParser: true })
+  .then( () => {
+      console.log('Database is connected')
+    },
+    err => {
+    console.log('Can not connect to the database'+ err)
+  });
 
 const app = express();
 const port = 8080;
@@ -27,6 +35,15 @@ const port = 8080;
 // });
 
 // app.use(express.static(__dirname + "/public"));
+app.use(cors({ origin: "*"}));
+// app.use(bodyParser.urlencoded({ extended: true}));
+
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+app.use("/auth", userRouter);
 app.use("/notes", noteRouter);
 
 
@@ -40,7 +57,7 @@ app.use("/notes", noteRouter);
 //     res.status(404);
 //     res.send(`Error: ${err.name} gfgdfgdfgdfgdfgdfg`);
 //
-//   } else {
+//   } else {q
 //     next(err);
 //   }
 //   next();

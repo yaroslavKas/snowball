@@ -6,13 +6,19 @@ let UserSchema = new Schema(
   {
     name: {
       type: String,
+      require: true
+    },
+    email: {
+      type: String,
       require: true,
-      minlength: 3
     },
     password: {
-      type: Number,
+      type: String,
       require: true,
-      minlength: 8
+    },
+    date: {
+      type: Date,
+      default: Date.now
     }
   }, {versionKey: false}
 );

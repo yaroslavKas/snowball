@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Button from '../../../components/Button'
 
 
 class NoteEditor extends Component {
@@ -16,8 +17,7 @@ class NoteEditor extends Component {
   handleNoteAdd = () => {
     const {text} = this.state;
     const data = {
-      body: text,
-      color: 'yellow',
+      note: text,
       // id: Date.now()
     };
 
@@ -29,15 +29,20 @@ class NoteEditor extends Component {
 
   render() {
     return (
-      <div className="note-editor">
-        <textarea
-          placeholder="Enter your note here..."
-          rows={5}
-          className="textarea"
-          value={this.state.text}
-          onChange={this.handleTextChange}
-        />
-        <button type="button" className="add-button" onClick={this.handleNoteAdd}>Add</button>
+      <div className="notes__editor">
+        <div className="notes__editor-block">
+          <textarea
+            placeholder="Enter your note here..."
+            rows={5}
+            className="textarea"
+            value={this.state.text}
+            onChange={this.handleTextChange}
+          />
+          <Button
+            name="Add"
+            onClick={this.handleNoteAdd}
+          />
+        </div>
       </div>
     )
   }

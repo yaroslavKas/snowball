@@ -1,0 +1,33 @@
+@import "../../scss/variable";
+@import "../../scss/mixins";
+
+.notes {
+  &__editor {
+    &-block {
+      max-width: 400px;
+      width: 100%;
+      position: relative;
+      margin: 0 auto;
+    }
+    textarea {
+      width: 100%;
+      background: $color-white;
+      resize: none;
+      padding: 15px 15px 40px;
+      border-radius: 4px;
+    }
+  }
+  &__search {
+    border-bottom: 1px solid $color-2-1;
+  }
+  &__list {
+    margin: 15px 0;
+  }
+  &__item {
+    background: deepskyblue;
+    width: 18%;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+}
+

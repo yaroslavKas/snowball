@@ -6,7 +6,7 @@ import noteController from './noteController';
 
 let noteRouter = express.Router();
 
-noteRouter.use('/', bodyParser.json());
+noteRouter.use(bodyParser.json());
 
 noteRouter.route('/:id')
   .get(noteController.get)

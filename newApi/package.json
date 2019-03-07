@@ -12,10 +12,13 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "hbs": "^4.0.2",
     "mongodb": "^3.1.13",
-    "mongoose": "^5.4.17"
+    "mongoose": "^5.4.17",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

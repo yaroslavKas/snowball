@@ -17,21 +17,25 @@ noteController.get = (req, res) => {
     if (note) {
       res.json(note)
     } else {
-      res.status(404)
-      // res.end()
+      res.status(404);
+      res.end()
     }
   })
 };
 
 noteController.post = (req, res) => {
-  Note.create(req.body, (err, note) => {
+  const note = {
+    note: req.body.note,
+  };
+
+  Note.create(note, (err, note) => {
     if (err) {
-      res.status(404)
-      // res.end()
+      res.status(404);
+      res.end()
     } else {
       res.status(201);
       res.set("Location", `${req.baseUrl}/${note.id}`);
-      // res.end();
+      res.end();
     }
   });
 };
@@ -49,13 +53,15 @@ noteController.put = (req, res) => {
       // res.end();
     } else {
       res.status(404);
-      // res.end();
+      res.end();
     }
   });
 };
 
 noteController.delete = (req, res) => {
-  Note.findByIdAndDelete(req.params.id, (err, deletedNote) => {
+  const id = req.params.id;
+
+  Note.findByIdAndDelete(id, (err, deletedNote) => {
     if (deletedNote) {
       res.send(`Note ${id} deleted`);
     } else {

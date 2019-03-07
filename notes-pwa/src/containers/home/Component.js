@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NoteEditor from './components/NoteEditor';
 import NoteGrid from './components/NoteGrid';
+import './Home.scss';
 
 // import PropTypes from 'prop-types';
 

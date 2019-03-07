@@ -1,0 +1,91 @@
+// Calcul em size depending of the context
+// Use em(fontSizeDoIWantInEm, fontContextInEM)
+// padding: 0 em(3.5, 2.2) 0 em(5, 2.2);
+@function em($fontSize, $context) {
+  @return #{$fontSize/$context}em;
+}
+
+@mixin respond-to($media) {
+  @if $media == desktop-xxx {
+    @media only screen and (max-width: $break-d-xxx) { @content; }
+  }
+  @else if $media == desktop-xx {
+    @media only screen and (max-width: $break-d-xx) { @content; }
+  }
+  @else if $media == desktop-x {
+    @media only screen and (max-width: $break-d-x) { @content; }
+  }
+  @else if $media == desktop-l {
+    @media only screen and (max-width: $break-d-l) { @content; }
+  }
+  @else if $media == desktop-m  {
+    @media only screen and (max-width: $break-d-m) { @content; }
+  }
+  @else if $media == desktop-s  {
+    @media only screen and (max-width: $break-d-s) { @content; }
+  }
+  @else if $media == tablet-l {
+    @media only screen and (max-width: $break-t-l) { @content; }
+  }
+  @else if $media == tablet-m {
+    @media only screen and (max-width: $break-t-m) { @content; }
+  }
+  @else if $media == tablet-s {
+    @media only screen and (max-width: $break-t-s) { @content; }
+  }
+  @else if $media == mobile-l {
+    @media only screen and (max-width: $break-m-l) { @content; }
+  }
+  @else if $media == mobile-m {
+    @media only screen and (max-width: $break-m-m) { @content; }
+  }
+  @else if $media == mobile-s {
+    @media only screen and (max-width: $break-m-s) { @content; }
+  }
+  @else if $media == mobile-xs {
+    @media only screen and (max-width: $break-m-xs) { @content; }
+  }
+}
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+@mixin flexBox($justify: inherit, $align: inherit) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+
+}
+
+@mixin flexFlow($wrap: nowrap, $direction: row) {
+  flex-wrap: $wrap;
+  flex-direction: $direction;
+}
+
+@mixin flex($grow: 0, $shrink: 1, $width: 0) {
+  flex-grow: $grow;
+  flex-shrink: $shrink;
+  flex-basis: $width;
+}
+

@@ -1,0 +1,15 @@
+@import "../scss/variable";
+@import "../scss/mixins";
+
+.main {
+  background: $color-1-6;
+  min-height: 100vh;
+  &__section {
+    width: 100%;
+    padding: 0 14px;
+    &_width {
+      max-width: 1170px;
+      margin: 0 auto;
+    }
+  }
+}
