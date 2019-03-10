@@ -33,7 +33,7 @@ app.post("/api/resourceName", (req, res) => {
   console.log(body);
 
   res.status(201);
-  res.set("Location", `/resourceName/3`);
+  resq.set("Location", `/resourceName/3`);
   res.end();
 });
 
