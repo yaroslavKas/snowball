@@ -6,7 +6,7 @@ import noteRouter from './routers/notes/noteRouter';
 import userRouter from './routers/users/userRouter';
 import cors from 'cors';
 
-mongoose.connect('mongodb://localhost:27017/newApi', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/newApi', { useNewUrlParser: true, useCreateIndex: true })
   .then( () => {
       console.log('Database is connected')
     },

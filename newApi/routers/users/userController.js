@@ -1,4 +1,6 @@
 import User from './userSchema';
+import bcrypt from 'bcrypt';
+
 // import validateLogin from './userLogin';
 // import validateRegister from './userRegister';
 // import passport from './userPassport';
@@ -6,40 +8,77 @@ import User from './userSchema';
 let userController = {};
 
 userController.post = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   // const { errors, isValid} = validateRegister(req.body);
 
   // if (!isValid) {
   //   return res.status(400).json(errors);
   // }
 
+  const login = req.body.email;
+  const password = req.body.password;
 
-  const user = {
-    email: req.body.email,
-    password: req.body.password
-  };
 
-  if (!user.email || !user.password) {
-    res.status(404);
+
+  const saltRounds = 10;
+
+  if (!login || !password) {
+
+    const fields = [];
+
+    if (!login) fields.push('login');
+    if (!password) fields.push('password');
+
     res.json({
       ok: false,
       error: 'All input must be full',
-      fields: ['email, password']
+      fields
     });
     res.end();
-  } else if (user.password.length < 6) {
-    res.status(404);
+
+  } else if (!/^[a-zA-Z0-9]+$/.test(login)) {
+    res.json({
+      ok: false,
+      error: 'only latin letters and numbers',
+      fields: ['login']
+    });
+    res.end();
+
+  } else if (password.length < 6) {
     res.json({
       ok: false,
       error: 'password min 3 letters',
       fields: ['email']
     });
     res.end();
+
   } else {
-    User.create(user, (err, user) => {
-      res.status(201);
-      res.json(user);
+
+    User.findOne({email: login}).then(user => {
+      if (!user) {
+        bcrypt.hash(password, saltRounds, (err, hash) =>  {
+          const user = {
+            email: login,
+            password: hash
+          };
+
+          User.create(user).then(() => {
+            res.status(201);
+            res.json({
+              ok: true,
+            });
+          })
+        });
+      } else {
+        res.json({
+          ok: false,
+          error: "Name used",
+          fields: ['login']
+        })
+      }
     })
+
+
   }
 };
 
