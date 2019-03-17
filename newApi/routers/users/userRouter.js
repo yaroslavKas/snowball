@@ -9,9 +9,11 @@ let userRouter = express.Router();
 userRouter.use(bodyParser.json());
 
 
-userRouter.route('/')
-  // .get(noteController.getAll)
-  .post(userController.post);
+userRouter.route('/registration')
+  .post(userController.registration);
+
+userRouter.route('/login')
+  .post(userController.login);
 
 
 module.exports = userRouter;

@@ -1,61 +1,32 @@
 import React, {Component} from 'react';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
+import Registration from './components/registration';
+import Login from './components/login';
 
 class Auth extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-    }
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //   }
+  // }
 
-  handleChange = (e) => {
-    const {name, value} = e.target;
-
-    this.setState({
-      [name]: value,
-    });
-
-    console.log('email',this.state.email)
-    console.log('password', this.state.password)
-  };
-
-  handleSubmit = () => {
-    const data = {...this.state};
-    console.log(data);
-
-    this.props.registrationFunction(data);
-    console.log(this.props.auth)
-  };
 
   render() {
 
     const {
-      email,
-      password,
-    } = this.state;
+      registrationFunction,
+      loginFunction,
+      login
+    } = this.props;
 
     return (
       <div>
-        <Input
-          name="email"
-          type="email"
-          value={email}
-          palceholder="Email"
-          onChange={this.handleChange}
+
+        <Registration
+          registrationFunction={registrationFunction}
         />
-        <Input
-          name="password"
-          type="password"
-          value={password}
-          placeholder="Password"
-          onChange={this.handleChange}
-        />
-        <Button
-          name="Registration"
-          onClick={this.handleSubmit}
+        <Login
+          login={login}
+          loginFunction={loginFunction}
         />
       </div>
     )

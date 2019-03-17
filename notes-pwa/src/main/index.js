@@ -5,14 +5,13 @@ import Header from '../containers/header';
 import Home from '../containers/home';
 import Auth from '../containers/auth';
 import './Main.scss';
+// import rs from '../config/routes';
 
 class App extends Component {
   render() {
     return (
       <main className="main">
-        <Header
-
-        />
+        <Header />
         <Auth />
 
         <div className="main__section main__section_width">

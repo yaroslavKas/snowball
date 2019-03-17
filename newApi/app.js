@@ -2,20 +2,35 @@
 
 import mongoose from 'mongoose';
 import express from 'express';
+import cors from 'cors';
+import session from 'express-session';
+import mongoStore from 'connect-mongo';
 import noteRouter from './routers/notes/noteRouter';
 import userRouter from './routers/users/userRouter';
-import cors from 'cors';
+import config from './config';
 
-mongoose.connect('mongodb://localhost:27017/newApi', { useNewUrlParser: true, useCreateIndex: true })
-  .then( () => {
+mongoose.connect('mongodb://localhost:27017/newApi', {useNewUrlParser: true, useCreateIndex: true})
+  .then(() => {
       console.log('Database is connected')
     },
     err => {
-    console.log('Can not connect to the database'+ err)
-  });
+      console.log('Can not connect to the database' + err)
+    });
 
 const app = express();
 const port = 8080;
+const MongoStore = mongoStore(session);
+
+app.use(
+  session({
+    secret: config.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection
+    })
+  })
+);
 
 // app.use(bodyParser.urlencoded({ extended: false}));
 // app.use(bodyParser.json());
@@ -35,7 +50,7 @@ const port = 8080;
 // });
 
 // app.use(express.static(__dirname + "/public"));
-app.use(cors({ origin: "*"}));
+app.use(cors({origin: "*"}));
 // app.use(bodyParser.urlencoded({ extended: true}));
 
 // app.use((req, res, next) => {

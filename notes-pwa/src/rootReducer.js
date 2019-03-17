@@ -1,11 +1,11 @@
 import { combineReducers} from 'redux';
 
 import notes from './containers/home/reducer';
-import registration from './containers/auth/reducer';
+import auth from './containers/auth/reducer';
 
 const rootReducer = combineReducers({
   notes,
-  registration
+  auth
 });
 
 export default rootReducer;

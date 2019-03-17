@@ -9,6 +9,7 @@ export default keyMirror({
 
 
   REGISTER_SUCCESS: 'REGISTER_SUCCESS',
+  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
 
   KEY_CODE: {
 
