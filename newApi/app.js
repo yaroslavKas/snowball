@@ -7,6 +7,7 @@ import session from 'express-session';
 import mongoStore from 'connect-mongo';
 import noteRouter from './routers/notes/noteRouter';
 import userRouter from './routers/users/userRouter';
+import cookieParser from 'cookie-parser';
 import config from './config';
 
 mongoose.connect('mongodb://localhost:27017/newApi', {useNewUrlParser: true, useCreateIndex: true})
@@ -21,11 +22,20 @@ const app = express();
 const port = 8080;
 const MongoStore = mongoStore(session);
 
+// const secretValue = 'secret value';
+//
+app.use(cookieParser());
+// app.use(session({secret: "Shh, its a secret!"}));
+
+
+
+
 app.use(
   session({
     secret: config.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    // cookie: { secure: false },
     store: new MongoStore({
       mongooseConnection: mongoose.connection
     })
