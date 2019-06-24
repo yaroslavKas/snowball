@@ -122,7 +122,6 @@ userController.login = (req, res) => {
               fields: ['login', 'password']
             })
           } else {
-            console.log(user);
 
             req.session.userId = user._id;
             req.session.userLogin = user.email;

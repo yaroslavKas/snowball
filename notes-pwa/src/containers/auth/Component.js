@@ -20,7 +20,6 @@ class Auth extends Component {
 
     return (
       <div>
-
         <Registration
           registrationFunction={registrationFunction}
         />
