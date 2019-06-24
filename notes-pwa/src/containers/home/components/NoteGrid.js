@@ -29,7 +29,9 @@ class NoteGrid extends Component {
   };
 
   componentWillReceiveProps = (nextProps) => {
-    this.setState({notesList: nextProps.notes, searchResult: nextProps.notes})
+    this.setState({
+      notesList: nextProps.notes,
+      searchResult: nextProps.notes})
   };
 
   componentDidUpdate = () => {

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import rs from '../config/routes';
 import Header from '../containers/header';
-import Home from '../containers/home';
 import Auth from '../containers/auth';
+import Home from '../containers/home';
+import socialNetwork from '../containers/socialNetwork';
 import './Main.scss';
 // import rs from '../config/routes';
 
@@ -15,13 +16,17 @@ class App extends Component {
         <Auth />
 
         <div className="main__section main__section_width">
-          <Home />
+          {/*<Home />*/}
         </div>
         <Switch>
           <Route
             exact
             path={rs.home}
             component={Home}
+          />
+          <Route
+            path={rs.network.home}
+            component={socialNetwork}
           />
         </Switch>
       </main>
