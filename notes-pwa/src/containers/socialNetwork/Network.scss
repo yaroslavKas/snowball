@@ -2,5 +2,14 @@
 @import "../../scss/mixins";
 
 .network {
+  min-height: calc(100vh - 60px);
   display: grid;
+  grid-template-areas: "nav content";
+  grid-template-rows: 1fr;
+  grid-template-columns: 200px 1fr;
+  padding: 40px 0;
+  &__content {
+    grid-area: content;
+    padding: 0 20px;
+  }
 }

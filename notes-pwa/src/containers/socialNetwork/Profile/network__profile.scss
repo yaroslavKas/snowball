@@ -1,0 +1,13 @@
+@import "../../../scss/variable";
+@import "../../../scss/mixins";
+
+.network-profile {
+  &__group {
+
+  }
+  &__header {
+    img  {
+      width: 100%;
+    }
+  }
+}

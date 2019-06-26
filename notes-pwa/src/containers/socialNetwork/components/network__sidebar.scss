@@ -1,0 +1,13 @@
+@import "../../../scss/variable";
+@import "../../../scss/mixins";
+
+.network-nav {
+  grid-area: nav;
+  &-item {
+    color: blue;
+    padding: 6px 20px;
+    &.active {
+      color: $color-black;
+    }
+  }
+}

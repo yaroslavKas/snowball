@@ -13,11 +13,11 @@ class App extends Component {
     return (
       <main className="main">
         <Header />
-        <Auth />
+        {/*<Auth />*/}
 
-        <div className="main__section main__section_width">
+        {/*<div className="main__section main__section_width">*/}
           {/*<Home />*/}
-        </div>
+        {/*</div>*/}
         <Switch>
           <Route
             exact

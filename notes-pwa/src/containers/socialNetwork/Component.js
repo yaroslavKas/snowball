@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import Sidebar from './components/network__sidebar';
-import Profile from './components/network__profile';
-import Messages from './components/network__messages';
+import Profile from './Profile';
+import Messages from './Messages';
 import rs from "../../config/routes";
 import './Network.scss';
 
@@ -11,7 +11,7 @@ class Network extends Component {
     return(
       <div className="network">
         <Sidebar/>
-        <section>
+        <div className="network__content">
           <Switch>
             <Route
               path={rs.network.profile}
@@ -34,7 +34,7 @@ class Network extends Component {
               {/*component={Profile}*/}
             {/*/>*/}
           </Switch>
-        </section>
+        </div>
       </div>
     )
   }
