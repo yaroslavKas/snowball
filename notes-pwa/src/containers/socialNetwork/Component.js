@@ -22,6 +22,11 @@ class Network extends Component {
               component={Messages}
             />
             {/*<Route*/}
+              {/*exact*/}
+              {/*path={rs.network.messages}*/}
+              {/*component={Messages}*/}
+            {/*/>*/}
+            {/*/!*<Route*!/*/}
               {/*path={rs.network.news}*/}
               {/*component={Profile}*/}
             {/*/>*/}
