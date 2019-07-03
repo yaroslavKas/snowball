@@ -19,7 +19,9 @@ class NetworkProfile extends Component{
             <p>dasfdsfdsf</p>
           </div>
         </section>
-        <Posts/>
+        <Posts
+          data={this.props.content}
+        />
       </div>
     )
   }

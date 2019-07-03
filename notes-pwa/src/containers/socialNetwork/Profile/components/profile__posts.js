@@ -5,6 +5,7 @@ import './profile__posts.scss';
 
 class ProfilePosts extends Component {
   render() {
+    console.log(this.props.data)
     return (
       <section className="network-profile__posts">
        <PostCreate/>
