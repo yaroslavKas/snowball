@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import rs from '../../../config/routes'
-import Message from './components/messages__item';
+// import Message from './components/messages__item';
 
 
 const data = [
@@ -41,22 +41,7 @@ class NetworkMessages extends Component {
           }
         </section>
         <section className="network-messages__list">
-          <Message
-            name="dmitry"
-            message="I em a popover and I can have text and everything"
-          />
-          <Message
-            name="dmitry"
-            message="I em a popover and I can have text and everything"
-          />
-          <Message
-            name="dmitry"
-            message="I em a popover and I can have text and everything"
-          />
-          <Message
-            name="dmitry"
-            message="I em a popover and I can have text and everything"
-          />
+          <p>dfdsf</p>
         </section>
       </div>
     )
