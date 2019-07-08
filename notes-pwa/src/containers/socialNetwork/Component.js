@@ -15,7 +15,12 @@ class Network extends Component {
           <Switch>
             <Route
               path={rs.network.profile}
-              component={Profile}
+              // component={Profile}
+              render={() =>
+                <Profile
+                  content={{test: "test"}}
+                />
+              }
             />
             <Route
               path={rs.network.messages}
