@@ -1,0 +1,260 @@
+@import "./variable";
+@import "./mixins";
+
+body {
+  font-family: $fontBase;
+  font-size: 16px;
+  line-height: 1.4;
+  color: $color-main;
+}
+
+a {
+  display: block;
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+//p, span {
+//  line-height: 1.67;
+//}
+//
+//.basic-section {
+//  width: 100%;
+//  padding: 0 14px;
+//  &_wrapper {
+//    max-width: 1170px;
+//    margin: 0 auto;
+//  }
+//}
+//
+//h1, h2, h3, h4, h5 {
+//  font-family: $HelveticaMedium;
+//  font-weight: $normal;
+//  line-height: 1.2;
+//  color: $color-title;
+//}
+//
+//h1 {
+//  .home & {
+//    font-size: 52px;
+//    letter-spacing: 2.2px;
+//    margin-bottom: 30px;
+//    @include respond-to(tablet-l) {
+//      font-size: 42px;
+//    }
+//  }
+//}
+//
+//.button-back {
+//  margin-bottom: 25px;
+//  .button {
+//    @include flexBox(inherit, center);
+//    font-size: 14px;
+//    font-weight: $medium;
+//    color: $color-main;
+//    padding: 0;
+//    &:before {
+//      font-size: 26px;
+//      margin-right: 10px;
+//    }
+//    &:hover,
+//    &:focus {
+//      background: transparent;
+//      color: $color-button;
+//      text-decoration: none;
+//    }
+//  }
+//}
+
+//.share {
+//  &__container {
+//    text-align: center;
+//    margin-bottom: 20px;
+//    .SocialMediaShareCount {
+//      min-width: 20px;
+//      height: 20px;
+//      position: absolute;
+//      top: -6px;
+//      right: -6px;
+//      font-size: 11px;
+//      padding: 2px;
+//      background: $color-6-2;
+//      border-radius: 100%;
+//      border: 1px solid $color-white;
+//      color: $color-white;
+//    }
+//  }
+//  &__block{
+//    width: 250px;
+//    position: relative;
+//    display: inline-block;
+//  }
+//  &__button {
+//    @include flexBox(center, center);
+//    font-weight: $bold;
+//    color: $color-white;
+//    background: $color-7-3;
+//    border-radius: 2px;
+//    transition: .5s;
+//    padding: 15px 20px;
+//    &:hover,
+//    &:focus {
+//      cursor: pointer;
+//      background: darken($color-7-3, 5%);
+//    }
+//    i {
+//      margin-right: 10px;
+//    }
+//  }
+//
+//}
+//
+//.tooltip {
+//  display: none;
+//  min-width: 110px;
+//  position: absolute;
+//  right: 100%;
+//  top: 100%;
+//  font-size: 12px;
+//  text-align: center;
+//  color: $color-white;
+//  border-radius: 4px;
+//  background: $color-main;
+//  box-shadow: 0 0 10px 2px rgba($color-black, .1);
+//  padding: 6px 10px;
+//  &:after {
+//    content: '';
+//    position: absolute;
+//    top: -9px;
+//    right: -4px;
+//    border-left: 10px solid transparent;
+//    border-right: 3px solid transparent;
+//    border-bottom: 16px solid $color-main;
+//    transform: rotate(26deg);
+//  }
+//}
+[class*="ti-"] {
+  &:before {
+    font-family: 'themify';
+  }
+}
+
+[class*="fa-"] {
+  &:before {
+    font-family: 'FontAwesome';
+  }
+}
+
+.scroll {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+  }
+  &::-webkit-scrollbar-button {
+    display: none
+  }
+  &::-webkit-scrollbar-track-piece {
+    background-color: rgba($color-button, .2);
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 40px;
+    background-color: $color-button;
+    border-radius: 4px;
+  }
+  &::-webkit-resizer {
+    background-color: rgba($color-button, .2);
+  }
+}
+.control {
+  &-arrow{
+    &:before {
+      font-family: 'themify';
+      color: $color-black;
+      border: none !important;
+    }
+    &:hover,
+    &:focus {
+      //background: rgba($color-main, .3) !important;
+    }
+  }
+  &-next {
+    &:before {
+      content: '\e649' !important;
+    }
+  }
+  &-prev {
+    &:before {
+      content: '\e64a' !important;
+    }
+  }
+}
+.carousel {
+  &.carousel-slider {
+    margin: auto;
+  }
+}
+.pagination {
+  @include flexBox(center);
+  margin: 30px 0;
+  li {
+    @include flexBox(center, center);
+    width: 50px;
+    height: 30px;
+    border: 1px solid $color-button;
+    border-radius: 20px;
+    margin: 2px;
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      background: $color-button;
+      a{
+        color: $color-white;
+      }
+    }
+    a {
+      color: $color-button;
+      &:before {
+        font-size: 14px;
+      }
+    }
+  }
+  .active {
+    background: $color-button;
+    a {
+      font-size: 14px;
+      color: $color-white;
+    }
+  }
+}
+.join {
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.7;
+  margin: 0 auto 15px;
+  &_rejected {
+    width: 100%;
+    color: $color-3-5;
+    background: rgba($color-3-5, .1);
+    border: 1px solid $color-3-5;
+    padding: 16px 30px;
+  }
+  &_wait {
+    max-width: 205px;
+    color: $color-1-8;
+  }
+  &_your {
+    width: 100%;
+    color: $color-6-1;
+    background: rgba($color-6-1, .1);
+    border: 1px solid $color-6-1;
+    padding: 16px 30px;
+    &-wrap {
+      max-width: 380px;
+      width: 100%;
+      margin: auto;
+    }
+  }
+}

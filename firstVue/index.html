@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 1px solid black;
+      margin: 40px;
+    }
+
+    .red {
+      background: red;
+    }
+
+    .green {
+      background: green;
+    }
+
+    .blue {
+      background: blue;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!--  <input type="text" v-on:input="changeName">-->
+  <!--  <a v-bind:href="url">Google</a>-->
+  <!--  <a :href="url">Google</a>-->
+  <!--  <h2>-->
+  <!--    Counter: {{ counter}}-->
+  <!--  </h2>-->
+  <!--  <h2 v-html="link"></h2>-->
+  <!--  <h2>{{ title }} = {{ counter }}</h2>-->
+  <!--  <button type="button" @click="counter++">Rise</button>-->
+  <!--  <button type="button" v-on:click="counter++">Rise</button>-->
+  <!--  <button type="button" v-on:click="riseCounter(10, 'change to 10', $event)">Add</button>-->
+
+
+  <!--  <h2 v-on:mouseover="onHover">counters 2 = {{ counter2 }}</h2>-->
+  <!--  <button type="button" v-on:click="counter2++">Add</button>-->
+
+  <!--  <h2 href="http://google.com" target="_blank" v-on:click.prevent="">google</h2>-->
+  <!--  <h2 v-on:mousemove="handleMouseMove">-->
+  <!--    x: {{ x }} \ y: {{ y }}-->
+  <!--    <span v-on:mousemove.stop="">Not change</span>-->
+  <!--  </h2>-->
+  <!--  <input type="text" v-on:keyup.enter.space="alertValue">-->
+
+  <!--  <input type="text" @input="inputValue = $event.target.value" :value="inputValue">-->
+  <!--  <input type="text" v-model.lazy="inputValue">-->
+  <!--  <h2>{{ inputValue }}</h2>-->
+
+  <!--  <div class="circle" v-on:click="isActive = !isActive" v-bind:class="getCssClasses"></div>-->
+  <!--  <div class="circle" v-bind:class="[color, {'red': isActive}]"></div>-->
+  <!--  <div class="circle" v-on:click="isActive = !isActive" ></div>-->
+  <!--  <input type="text" v-model="color">-->
+
+  <!--  <h1 v-show="isVisible">A</h1>-->
+  <!--  <h2 v-else-if="type === 'b'">B</h2>-->
+  <!--  <h2 v-else-if="type === 'c'">c</h2>-->
+  <!--  <h2 v-show="!isVisible">Not match</h2>-->
+
+  <!--  <input type="text" v-model="type">-->
+
+  <!--  <button v-on:click="isVisible = !isVisible">Toggle</button>-->
+
+  <!--  <ul>-->
+  <!--    <li v-for="(person, index) of people">{{ index +1}}. {{person.name}} <b>{{person.age}}</b></li>-->
+  <!--  </ul>-->
+  <!--  <ul>-->
+  <!--    <li v-for="num of 10">{{ num }}</b></li>-->
+  <!--  </ul>-->
+  <!--  <ul>-->
+  <!--    <li v-for="(value, key) of person">{{ key }} {{ value }}</b></li>-->
+  <!--  </ul>-->
+
+  <!--  <h2>Counter {{ counter}} \ {{ counter2 }}</h2>-->
+  <!--  <h3>result {{ result() }}</h3>-->
+  <!--  <h3>Computetd {{ computedResult }}</h3>-->
+
+  <!--  <button type="button" v-on:click="add">Add</button>-->
+  <!--  <button type="button" v-on:click="sub">Sub</button>-->
+  <!--  <button type="button" v-on:click="counter2++">add244</button>-->
+
+  <h2 ref="heading">{{ title }}</h2>
+  <button type="button" v-on:click="updateTitle">update title</button>
+  <button type="button" v-on:click="doDestroy">destroy</button>
+</div>
+
+<div id="app2">
+  <h2>{{ title }}</h2>
+  <button type="button" v-on:click="updateFirstTitle">update title2</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+  new Vue({
+    el: '#app2',
+    data: {
+      title: 'Hello from vue 2'
+    },
+    methods: {
+      updateFirstTitle: function () {
+        vue1.title = "second2"
+      }
+    }
+  });
+  let vue1 = new Vue({
+    el: '#app',
+    data: {
+      title: "Hello I am Vue",
+      // counter: 0,
+      // counter2: 0
+      // people: [
+      //   {name: 'valad', age: 46},
+      //   {name: 'max', age: 11},
+      //   {name: 'elena', age: 25},
+      //   {name: 'tom', age: 34},
+      //
+      // ],
+      // person: {
+      //   name: 'valad',
+      //   age: 46,
+      //   job: "Gooo"
+      // }
+      // isVisible: true,
+      // type: 'a'
+      // isActive: false,
+      // color: "blue"
+      // inputValue: "test",
+      // counter2: 0
+      // url: 'http://google.com',
+      // link: '<a href="http://google.com">Google</a>'
+      // x: 0,
+      // y: 0
+    },
+    beforeCreate: function () {
+      console.log("beforeCreate")
+    },
+    created: function () {
+      console.log("created")
+    },
+    beforeMount: function () {
+      console.log("beforeMount")
+    },
+    mounted: function () {
+      console.log("mounted")
+    },
+    beforeUpdate: function () {
+      console.log("beforeUpdate")
+    },
+    updated: function () {
+      console.log("updated")
+    },
+    beforeDestroy: function () {
+      console.log("beforeDestroy")
+    },
+    destroyed: function () {
+      console.log("destroyed")
+    },
+    computed: {
+      // getCssClasses: function() {
+      //   return {
+      //     'red': this.isActive,
+      //     'green': !this.isActive
+      //   }
+      // }
+      // computedResult: function() {
+      //   console.log("computedResult vgffg");
+      //   return this.counter > 3 ? "More than 3": "less than 3";
+      // }
+    },
+    watch: {
+      // counter:function(val) {
+      //   console.log(this.counter,  "value=", val)
+      // }
+    },
+    methods: {
+      updateTitle: function () {
+        this.title = "new title",
+          console.log(this.$refs)
+      },
+      doDestroy: function(){
+        this.$destroy()
+      }
+      // add: function() {
+      //   this.counter++;
+      // },
+      // sub: function() {
+      //   this.counter--;
+      // },
+      // result: function() {
+      //   console.log("vgffg")
+      //   return this.counter > 3 ? "More than 3": "less than 3";
+      // }
+
+      // handleMouseMove: function (e) {
+      //   this.x = e.clientX;
+      //   this.y = e.clientY;
+      // },
+      // alertValue: function(e) {
+      //   alert(e.target.value)
+      //
+      // }
+      // riseCounter: function(num, str, event){
+      //   this.counter += num;
+      //   this.title = str;
+      //
+      //   if (num === 5) {
+      //     event.target.style.color = "blue"
+      //   } else if (num === 10) {
+      //     event.target.style.color = "red"
+      //   }
+      // },
+      // onHover: function(event) {
+      //   event.target.style.color = "red"
+      // }
+    }
+  })
+</script>
+
+</body>
+</html>

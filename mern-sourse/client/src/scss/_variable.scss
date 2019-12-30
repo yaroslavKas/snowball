@@ -1,0 +1,84 @@
+$fontBase: 'HelveticaLight', sans-serif;
+$HelveticaMedium: 'HelveticaMedium', sans-serif;
+$HelveticaLightItalic: 'HelveticaLightItalic', sans-serif;
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+
+$color-1-1: #9d9d9d;//
+$color-1-2: #979797;
+$color-1-3: #f7f9fb;//
+$color-1-4: #7d7d7d;
+$color-1-5: #d0cfcf;
+
+$color-1-6: #f8f8f4; //
+
+
+$color-1-7: #7d7d7d; //
+$color-1-8: #afb5bd; //
+$color-1-9: #d7dada; //
+
+
+$color-2-1: #131313;//
+$color-2-2: #0f2f20;//
+$color-2-3: #5b5c5f;
+$color-2-4: #828286;
+$color-2-5: #333333;
+$color-2-6: #7b7b7b;
+$color-2-7: #5e6c7d;//
+$color-2-8: #282c34;//
+
+
+$color-3-1: #db5071;//
+$color-3-2: #ff5b5b;//
+$color-3-3: #ff6a43;//
+$color-3-4: #cf364d;//
+$color-3-5: #eb1c26;//
+
+
+
+$color-6-1: #61cb83;//
+$color-6-2: #358054;//
+$color-6-3: #143d2a;//
+$color-6-4: #347e53;//
+
+$color-7-1: #2d91fe;//
+$color-7-2: #0f3996;//
+$color-7-3: #244d7f;//
+
+$color-8-1: #815858;
+
+$color-9-1: #f5cb50;//
+$color-9-2: #fdb23a;//
+$color-9-3: #fff7ea;//
+
+
+$color-main: $color-2-7;
+$color-text: $color-2-5;
+$color-title: $color-2-1;
+$color-button: $color-2-1;
+
+
+$thin: 100;
+$extralight: 200;
+$light: 300;
+$normal: 400;
+$medium: 500;
+$bold: 600;
+$extrabold: 800;
+$black: 900;
+
+$break-d-xxx:   1450px; //  desktop-xxx
+$break-d-xx:    1200px; //  desktop-xx
+$break-d-x:     1150px; //  desktop-x
+$break-d-l:     1024px; //  desktop-l
+$break-d-m:     965px;  //  desktop-m
+$break-d-s:     860px;  //  desktop-s
+$break-t-l:     767px;  //  tablet-l
+$break-t-m:     736px;  //  tablet-m
+$break-t-s:     667px;  //  tablet-s
+$break-m-l:     568px;  //  mobile-l
+$break-m-m:     480px;  //  mobile-m
+$break-m-s:     384px;  //  mobile-s
+$break-m-xs:    320px;  //  mobile-xs

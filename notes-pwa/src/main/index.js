@@ -21,7 +21,7 @@ class App extends Component {
         <Switch>
           <Route
             exact
-            path={rs.home}
+            path={}
             component={Home}
           />
           <Route
