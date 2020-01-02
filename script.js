@@ -66,20 +66,70 @@ function pow(x, n) {
 //   return +str.slice(1);
 // }
 
-function getMaxSubSum(arr) {
-  let sum = 0;
-  let partSum = 0;
-  for (let item of arr) {
-    partSum += item;
-    sum = Math.max(sum, partSum);
-    if (partSum < 0) {
-      partSum = 0
-    }
-  }
-  return sum
-}
+// function getMaxSubSum(arr) {
+//   let sum = 0;
+//   let partSum = 0;
+//   for (let item of arr) {
+//     partSum += item;
+//     sum = Math.max(sum, partSum);
+//     if (partSum < 0) {
+//       partSum = 0
+//     }
+//   }
+//   return sum
+// }
+//
+// console.log(getMaxSubSum([-1, 2, 3, -9, 4, 3]))
 
-console.log(getMaxSubSum([-1, 2, 3, -9, 4, 3]))
+// let arr = [1, 2];
+// // arr.splice(1,1)
+// // let teste = arr.slice(-2)
+// let newArr = arr.concat([2, 3, 4])
+// console.log(newArr)
+//
+//   ["Bilbo", "Gandalf", "Nazgul"].forEach((item, index, array) => {
+//   alert(`${item} имеет позицию ${index} в ${array}`);
+// });
+
+// function compare(a, b) {
+//   return (a - b)
+//   // if (a > b) return 1; // если первое значение больше второго
+//   // if (a == b) return 0; // если равны
+//   // if (a < b) return -1; // если первое значение меньше второго
+// }
+
+// let camelize = function(str) {
+//   let strArray = str.split('-');
+//   let result = [];
+//   strArray.map((word, index) => {
+//     if (index == 0) result.push(word);
+//     else result.push(word[0].toUpperCase() + word.slice(1))
+//   });
+//
+//   return result.join("");
+// };
+let arr = ["HTML", "JavaScript", "CSS"];
+
+let copySorted = function(arr) {
+  // let copy = [];
+  //
+  // arr.map(item => {
+  //   copy.push(item);
+  // });
+
+  return arr.slice().sort();
+};
+
+
+let sorted = copySorted(arr);
+console.log(sorted);
+console.log(arr);
+// let names = 'Вася, Петя, Маша';
+// console.log(names.split(','))
+// //
+// let rrr = arr.sort((a, b) => a-b);
+//
+// console.log(rrr)
 
 
 // function Accumulator(startingValue) {
