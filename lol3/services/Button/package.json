@@ -1,0 +1,10 @@
+{
+  "name": "@monorepo/button",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.tsx",
+  "license": "ISC",
+  "scripts": {
+    "test": "react-scripts test"
+  }
+}

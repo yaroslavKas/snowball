@@ -1,0 +1,12 @@
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-2xl);
+    color: var(--gray--800);
+}
+
+.sport:before {
+    content: "\f100";
+}
+

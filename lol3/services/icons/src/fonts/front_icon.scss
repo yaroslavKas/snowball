@@ -1,0 +1,75 @@
+$front_icon-font: "front_icon";
+
+@font-face {
+    font-family: $front_icon-font;
+    src: url("./front_icon.ttf?fa8329f1a39d7ab1b7686033c941eef6") format("truetype"),
+url("./front_icon.woff2?fa8329f1a39d7ab1b7686033c941eef6") format("woff2"),
+url("./front_icon.woff?fa8329f1a39d7ab1b7686033c941eef6") format("woff");
+}
+
+i:before {
+    font-family: front_icon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$front_icon-map: (
+    "sport-soccer": "\f100",
+    "close_0": "\f101",
+    "company_0": "\f102",
+    "condition_0": "\f103",
+    "delete_0": "\f104",
+    "end_0": "\f105",
+    "error_0": "\f106",
+    "function_0": "\f107",
+    "notification_0": "\f108",
+    "recent_0": "\f109",
+    "shared_0": "\f10a",
+    "star_0": "\f10b",
+    "start_0": "\f10c",
+);
+
+i.icon-sport-soccer:before {
+    content: map-get($front_icon-map, "sport-soccer");
+}
+i.icon-close_0:before {
+    content: map-get($front_icon-map, "close_0");
+}
+i.icon-company_0:before {
+    content: map-get($front_icon-map, "company_0");
+}
+i.icon-condition_0:before {
+    content: map-get($front_icon-map, "condition_0");
+}
+i.icon-delete_0:before {
+    content: map-get($front_icon-map, "delete_0");
+}
+i.icon-end_0:before {
+    content: map-get($front_icon-map, "end_0");
+}
+i.icon-error_0:before {
+    content: map-get($front_icon-map, "error_0");
+}
+i.icon-function_0:before {
+    content: map-get($front_icon-map, "function_0");
+}
+i.icon-notification_0:before {
+    content: map-get($front_icon-map, "notification_0");
+}
+i.icon-recent_0:before {
+    content: map-get($front_icon-map, "recent_0");
+}
+i.icon-shared_0:before {
+    content: map-get($front_icon-map, "shared_0");
+}
+i.icon-star_0:before {
+    content: map-get($front_icon-map, "star_0");
+}
+i.icon-start_0:before {
+    content: map-get($front_icon-map, "start_0");
+}

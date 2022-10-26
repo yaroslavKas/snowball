@@ -1,0 +1,14 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   scope: '@monorepo/front',
+0 silly argv   globs: [],
+0 silly argv   lernaVersion: '6.0.1',
+0 silly argv   '$0': 'lerna',
+0 silly argv   pkg: '@monorepo/input'
+0 silly argv }
+1 notice cli v6.0.1
+2 verbose rootPath /media/kas27/80799d97-819a-4c4b-a4cc-27413cc223d9/kas27/projects/www/cep_react18/lol3
+3 error HttpErrorGeneral: 404 Not Found - GET https://registry.npmjs.org/@monorepo%2finput - Not found
+3 error     at /media/kas27/80799d97-819a-4c4b-a4cc-27413cc223d9/kas27/projects/www/cep_react18/lol3/node_modules/npm-registry-fetch/lib/check-response.js:95:15
+3 error     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+3 error     at async RegistryFetcher.packument (/media/kas27/80799d97-819a-4c4b-a4cc-27413cc223d9/kas27/projects/www/cep_react18/lol3/node_modules/pacote/lib/registry.js:92:19)
